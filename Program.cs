@@ -4,27 +4,30 @@ namespace SlotMachine; // Note: actual namespace depends on the project name.
 
 class Program
 {
+    const int COL_NUMBER = 3;
+    const int ROW_NUMBER = 3;
+    const int RDM_NUMBER_TOP_END = 11;
+
     static void Main(string[] args)
     {
-        Console.WriteLine("Slot Machine");
+        Console.WriteLine(" Slot Machine"); //Intro text
+        Console.WriteLine("*-*-*-*-*-*-*-*\n");
 
-        int[,] slotMachine = new int[3, 3]; //2D Array with numbers for each slot
-        slotMachine[0, 0] = (int)0.5;
-        slotMachine[0, 1] = (int)0.2;
-        slotMachine[0, 2] = (int)0.3;
+        double[,] slotMachine = new double[ROW_NUMBER, COL_NUMBER]; //2D Array with numbers for each slot
 
-        slotMachine[1, 0] = (int)0.4;
-        slotMachine[1, 1] = (int)0.3;
-        slotMachine[1, 2] = (int)0.3;
+        var rng = new Random(); //Random generator
 
-        slotMachine[2, 0] = (int)0.6;
-        slotMachine[2, 1] = (int)0.4;
-        slotMachine[2, 2] = (int)0.3;
-
-        //Output array
-        foreach (int number in slotMachine)
+        for(int rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++) //Random number for slots
         {
-            Console.WriteLine(number);
-        }
-    }
-}
+            Console.WriteLine("");
+
+            for(int colIndex = 0; colIndex < COL_NUMBER; colIndex++)
+            {
+                slotMachine[rowIndex,colIndex] = rng.Next(RDM_NUMBER_TOP_END); //Random generator for each slot in machine
+                Console.Write(slotMachine[rowIndex,colIndex] + "\t"); //Pring random numbers for slot
+            }
+
+        }//end Slot loop
+
+    }//end Main args
+}//end class Program
