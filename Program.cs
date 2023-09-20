@@ -7,9 +7,12 @@ class Program
     const int COL_NUMBER = 3;
     const int ROW_NUMBER = 3;
     const int RDM_NUMBER_TOP_END = 11;
+    
 
     static void Main(string[] args)
     {
+        int madeAttempts;
+
         Console.WriteLine(" Slot Machine"); //Intro text
         Console.WriteLine("*-*-*-*-*-*-*-*\n");
 
@@ -19,17 +22,27 @@ class Program
 
         int rowIndex;
         int colIndex;
-        for(rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++) //Random number for slots
-        {
-            Console.WriteLine("");
 
-            for(colIndex = 0; colIndex < COL_NUMBER; colIndex++)
+        for (int i = 0; i < max; i++)
+        {
+
+            for (int i = 0; i < max; i++)
             {
-                slotMachine[rowIndex,colIndex] = rng.Next(RDM_NUMBER_TOP_END); //Random generator for each slot in machine
-                
+
+                for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++) //Random number for slots
+                {
+                    Console.WriteLine("");
+
+                    for (colIndex = 0; colIndex < COL_NUMBER; colIndex++)
+                    {
+                        slotMachine[rowIndex, colIndex] = rng.Next(RDM_NUMBER_TOP_END); //Random generator for each slot in machine
+                    }
+
+                }//end Slot loop
+       
             }
 
-        }//end Slot loop
+        }
         Console.Write(slotMachine[rowIndex, colIndex] + "\t"); //Pring random numbers for slot
     }//end Main args
 }//end class Program
