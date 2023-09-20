@@ -17,17 +17,19 @@ class Program
 
         var rng = new Random(); //Random generator
 
-        for(int rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++) //Random number for slots
+        int rowIndex;
+        int colIndex;
+        for(rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++) //Random number for slots
         {
             Console.WriteLine("");
 
-            for(int colIndex = 0; colIndex < COL_NUMBER; colIndex++)
+            for(colIndex = 0; colIndex < COL_NUMBER; colIndex++)
             {
                 slotMachine[rowIndex,colIndex] = rng.Next(RDM_NUMBER_TOP_END); //Random generator for each slot in machine
-                Console.Write(slotMachine[rowIndex,colIndex] + "\t"); //Pring random numbers for slot
+                
             }
 
         }//end Slot loop
-
+        Console.Write(slotMachine[rowIndex, colIndex] + "\t"); //Pring random numbers for slot
     }//end Main args
 }//end class Program
