@@ -27,9 +27,7 @@ class Program
             for (colIndex = 0; colIndex < COL_NUMBER; colIndex++)
             {
                 slotMachine[rowIndex, colIndex] = rng.Next(RDM_NUMBER_TOP_END); //Random generator for each slot in machine
-                                                                                //           Console.Write(slotMachine[rowIndex, colIndex] + "\t"); //Pring random numbers for slot
             }
-
         }//end Slot loop
 
         for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++) //Random number for slots
@@ -39,10 +37,26 @@ class Program
                 Console.Write(slotMachine[rowIndex, colIndex] + "\t"); //Print random numbers for slot
             }
             Console.WriteLine("");
-
         }//end Slot Print loop
 
-        
+
+        for (int horizontalWinScenario = 0; horizontalWinScenario < ROW_NUMBER; horizontalWinScenario++)
+        {
+            //Winning scenario - Horizontal
+            if (slotMachine[0,0] == slotMachine[0,1] && slotMachine[0,1] == slotMachine[0,2])
+            {
+                Console.WriteLine("Top line win");
+            }
+            if (slotMachine[1,0] == slotMachine[1,1] && slotMachine[1,1] == slotMachine[1,2])
+            {
+                Console.WriteLine("Middle line win");
+            }
+            if (slotMachine[2,0] == slotMachine[2,1] && slotMachine[2,1] == slotMachine[2,2])
+            {
+                Console.WriteLine("Bottom line win");
+            }
+        }
+
 
     }//end Main args
 }//end class Program
