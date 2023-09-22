@@ -39,24 +39,50 @@ class Program
             Console.WriteLine("");
         }//end Slot Print loop
 
-
         for (int horizontalWinScenario = 0; horizontalWinScenario < ROW_NUMBER; horizontalWinScenario++)
         {
             //Winning scenario - Horizontal
             if (slotMachine[0,0] == slotMachine[0,1] && slotMachine[0,1] == slotMachine[0,2])
             {
-                Console.WriteLine("Top line win");
+                Console.WriteLine("Top horizontal line");
             }
             if (slotMachine[1,0] == slotMachine[1,1] && slotMachine[1,1] == slotMachine[1,2])
             {
-                Console.WriteLine("Middle line win");
+                Console.WriteLine("Middle horizontal line");
             }
             if (slotMachine[2,0] == slotMachine[2,1] && slotMachine[2,1] == slotMachine[2,2])
             {
-                Console.WriteLine("Bottom line win");
+                Console.WriteLine("Bottom horizontal line");
             }
         }
 
+        for (int verticalWinningScenario = 0; verticalWinningScenario < COL_NUMBER; verticalWinningScenario++)
+        {
+            //Winning scenario - Vertical 
+            if (slotMachine[0, 0] == slotMachine[1, 0] && slotMachine[1, 0] == slotMachine[2, 0])
+            {
+                Console.WriteLine("Left vertical line");
+            }
+            if (slotMachine[1, 0] == slotMachine[1, 1] && slotMachine[1, 1] == slotMachine[1, 2])
+            {
+                Console.WriteLine("Middle vertical line");
+            }
+            if (slotMachine[2, 0] == slotMachine[2, 1] && slotMachine[2, 1] == slotMachine[2, 2])
+            {
+                Console.WriteLine("Right vertical line");
+            }
+        }
+
+        //Winning scenario - Diagonal
+        if (slotMachine[0,0] == slotMachine[1,1] && slotMachine[1,1] == slotMachine[2,2])
+        {
+            Console.WriteLine("Diagonal Top left");
+        }
+
+        if (slotMachine[0,2] == slotMachine[1,1] && slotMachine[1,1] == slotMachine[2,0])
+        {
+            Console.WriteLine("Diagonal Top right");
+        }
 
     }//end Main args
 }//end class Program
