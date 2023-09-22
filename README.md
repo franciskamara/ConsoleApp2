@@ -1,2 +1,2 @@
-# ConsoleApp2
+# Slot Machine
 Slot_Machine sln
