@@ -13,8 +13,8 @@ class Program
     {
 
 
-        Console.WriteLine(" Slot Machine"); //Intro text
-        Console.WriteLine("*-*-*-*-*-*-*-*\n");
+        Console.WriteLine("   Slot Machine"); //Intro text
+        Console.WriteLine("*-*-*-*-*-*-*-*-*-*\n");
 
         double[,] slotMachine = new double[ROW_NUMBER, COL_NUMBER]; //2D Array with numbers for each slot
 
@@ -22,15 +22,16 @@ class Program
 
         int rowIndex;
         int colIndex;
-        for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++) //Random number for slots
+        for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++) //Generate random numbers for Slot per row
         {
-            for (colIndex = 0; colIndex < COL_NUMBER; colIndex++)
+            for (colIndex = 0; colIndex < COL_NUMBER; colIndex++) //Generate random numbers for Slot per column
             {
                 slotMachine[rowIndex, colIndex] = rng.Next(RDM_NUMBER_TOP_END); //Random generator for each slot in machine
             }
         }//end Slot loop
 
-        for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++) //Random number for slots
+        //Print Slot numbers
+        for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++) 
         {
             for (colIndex = 0; colIndex < COL_NUMBER; colIndex++)
             {
@@ -39,50 +40,18 @@ class Program
             Console.WriteLine("");
         }//end Slot Print loop
 
-        for (int horizontalWinScenario = 0; horizontalWinScenario < ROW_NUMBER; horizontalWinScenario++)
+        //Check for Winning scenarios
+        for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++)
         {
-            //Winning scenario - Horizontal
-            if (slotMachine[0,0] == slotMachine[0,1] && slotMachine[0,1] == slotMachine[0,2])
+            for (colIndex = 0; colIndex < COL_NUMBER; colIndex++)
             {
-                Console.WriteLine("Top horizontal line");
-            }
-            if (slotMachine[1,0] == slotMachine[1,1] && slotMachine[1,1] == slotMachine[1,2])
-            {
-                Console.WriteLine("Middle horizontal line");
-            }
-            if (slotMachine[2,0] == slotMachine[2,1] && slotMachine[2,1] == slotMachine[2,2])
-            {
-                Console.WriteLine("Bottom horizontal line");
+                if (slotMachine[rowIndex, colIndex] == slotMachine[rowIndex, colIndex -1])
+                {  
+                    Console.WriteLine("Winning row");
+                }
             }
         }
 
-        for (int verticalWinningScenario = 0; verticalWinningScenario < COL_NUMBER; verticalWinningScenario++)
-        {
-            //Winning scenario - Vertical 
-            if (slotMachine[0, 0] == slotMachine[1, 0] && slotMachine[1, 0] == slotMachine[2, 0])
-            {
-                Console.WriteLine("Left vertical line");
-            }
-            if (slotMachine[1, 0] == slotMachine[1, 1] && slotMachine[1, 1] == slotMachine[1, 2])
-            {
-                Console.WriteLine("Middle vertical line");
-            }
-            if (slotMachine[2, 0] == slotMachine[2, 1] && slotMachine[2, 1] == slotMachine[2, 2])
-            {
-                Console.WriteLine("Right vertical line");
-            }
-        }
-
-        //Winning scenario - Diagonal
-        if (slotMachine[0,0] == slotMachine[1,1] && slotMachine[1,1] == slotMachine[2,2])
-        {
-            Console.WriteLine("Diagonal Top left");
-        }
-
-        if (slotMachine[0,2] == slotMachine[1,1] && slotMachine[1,1] == slotMachine[2,0])
-        {
-            Console.WriteLine("Diagonal Top right");
-        }
 
     }//end Main args
 }//end class Program
