@@ -8,11 +8,8 @@ class Program
     const int ROW_NUMBER = 3;
     const int RDM_NUMBER_TOP_END = 11;
 
-
     static void Main(string[] args)
     {
-
-
         Console.WriteLine("   Slot Machine"); //Intro text
         Console.WriteLine("*-*-*-*-*-*-*-*-*-*\n");
 
@@ -40,8 +37,8 @@ class Program
             Console.WriteLine("");
         }//end Slot Print loop
 
-        //Check for winning scenarios - Row
-        for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++)
+        //Winning Scenarios
+        for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++) //Winning scenario - Row
         {
             for (colIndex = 1; colIndex < COL_NUMBER; colIndex++)
             {
@@ -52,8 +49,7 @@ class Program
             }
         } //end Winning Row for Loop
 
-        //Check for winning scenarios - Column
-        for (rowIndex = 1; rowIndex < ROW_NUMBER; rowIndex++)
+        for (rowIndex = 1; rowIndex < ROW_NUMBER; rowIndex++) //Winning scenario - Column
         {
             for (colIndex = 0; colIndex < COL_NUMBER; colIndex++)
             {
@@ -64,6 +60,16 @@ class Program
             }
         }//end Winning Column for Loop
 
-    }//end Main args
+        for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++) //Winning scenario - Diagonal
+        {
+            for (colIndex = 0; colIndex < COL_NUMBER; colIndex++)
+            {
+                if (slotMachine[rowIndex, colIndex] == slotMachine[rowIndex + 1, colIndex + 1])
+                {
+                    Console.WriteLine("Winning diagonal");
+                }
+            }
 
+        }//end Winning Diagonal for Loop
+    }//end Main args
 }//end class Program
