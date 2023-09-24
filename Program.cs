@@ -70,6 +70,18 @@ class Program
                 }
             }
 
-        }//end Winning Diagonal for Loop
+        }//end Winning Diagonal1 for Loop
+
+        for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++) //Winning scenario - Diagonal
+        {
+            for (colIndex = COL_NUMBER; colIndex < COL_NUMBER; colIndex--)
+            {
+                if (slotMachine[rowIndex, colIndex] == slotMachine[rowIndex - 1, colIndex - 1])
+                {
+                    Console.WriteLine("Winning diagonal");
+                }
+            }
+
+        }//end Winning Diagonal2 for Loop
     }//end Main args
 }//end class Program
