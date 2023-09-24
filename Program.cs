@@ -43,7 +43,7 @@ class Program
         //Check for Winning scenarios
         for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++)
         {
-            for (colIndex = 0; colIndex < COL_NUMBER; colIndex++)
+            for (colIndex = 1; colIndex < COL_NUMBER; colIndex++)
             {
                 if (slotMachine[rowIndex, colIndex] == slotMachine[rowIndex, colIndex -1])
                 {  
