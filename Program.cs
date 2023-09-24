@@ -16,7 +16,7 @@ class Program
         Console.WriteLine("   Slot Machine"); //Intro text
         Console.WriteLine("*-*-*-*-*-*-*-*-*-*\n");
 
-        double[,] slotMachine = new double[ROW_NUMBER, COL_NUMBER]; //2D Array with numbers for each slot
+        int[,] slotMachine = new int[ROW_NUMBER, COL_NUMBER]; //2D Array with numbers for each slot
 
         var rng = new Random(); //Random generator
 
@@ -31,7 +31,7 @@ class Program
         }//end Slot loop
 
         //Print Slot numbers
-        for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++) 
+        for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++)
         {
             for (colIndex = 0; colIndex < COL_NUMBER; colIndex++)
             {
@@ -40,18 +40,30 @@ class Program
             Console.WriteLine("");
         }//end Slot Print loop
 
-        //Check for Winning scenarios
+        //Check for Winning scenarios - Row
         for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++)
         {
             for (colIndex = 1; colIndex < COL_NUMBER; colIndex++)
             {
-                if (slotMachine[rowIndex, colIndex] == slotMachine[rowIndex, colIndex -1])
-                {  
+                if (slotMachine[rowIndex, colIndex] == slotMachine[rowIndex, colIndex - 1])
+                {
                     Console.WriteLine("Winning row");
+                }
+            }
+        } //end Winning row for Loop
+
+        //Check for winning scenarios - Column
+        for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++)
+        {
+            for (colIndex = 0; colIndex < COL_NUMBER; colIndex++)
+            {
+                if (slotMachine[rowIndex, colIndex] == slotMachine[rowIndex, colIndex])
+                {
+
                 }
             }
         }
 
-
     }//end Main args
+
 }//end class Program
