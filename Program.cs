@@ -40,7 +40,7 @@ class Program
             Console.WriteLine("");
         }//end Slot Print loop
 
-        //Check for Winning scenarios - Row
+        //Check for winning scenarios - Row
         for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++)
         {
             for (colIndex = 1; colIndex < COL_NUMBER; colIndex++)
@@ -50,19 +50,19 @@ class Program
                     Console.WriteLine("Winning row");
                 }
             }
-        } //end Winning row for Loop
+        } //end Winning Row for Loop
 
         //Check for winning scenarios - Column
-        for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++)
+        for (rowIndex = 1; rowIndex < ROW_NUMBER; rowIndex++)
         {
             for (colIndex = 0; colIndex < COL_NUMBER; colIndex++)
             {
-                if (slotMachine[rowIndex, colIndex] == slotMachine[rowIndex, colIndex])
+                if (slotMachine[rowIndex, colIndex] == slotMachine[rowIndex - 1, colIndex])
                 {
-
+                    Console.WriteLine("Winning column");
                 }
             }
-        }
+        }//end Winning Column for Loop
 
     }//end Main args
 
