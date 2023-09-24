@@ -60,21 +60,21 @@ class Program
             }
         }//end Winning Column for Loop
 
-        for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++) //Winning scenario - Diagonal
-        {
-            for (colIndex = 0; colIndex < COL_NUMBER; colIndex++)
-            {
-                if (slotMachine[rowIndex, colIndex] == slotMachine[rowIndex + 1, colIndex + 1])
-                {
-                    Console.WriteLine("Winning diagonal");
-                }
-            }
+        //for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++) //Winning scenario - Diagonal
+        //{
+        //    for (colIndex = 0; colIndex < COL_NUMBER; colIndex++)
+        //    {
+        //        if (slotMachine[rowIndex, colIndex] == slotMachine[rowIndex + 1, colIndex + 1])
+        //        {
+        //            Console.WriteLine("Winning diagonal");
+        //        }
+        //    }
 
-        }//end Winning Diagonal1 for Loop
+        //}//end Winning Diagonal1 for Loop
 
-        for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++) //Winning scenario - Diagonal
+        for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++) //Winning scenario - Diagonal 2
         {
-            for (colIndex = COL_NUMBER; colIndex < COL_NUMBER; colIndex--)
+            for (colIndex = COL_NUMBER; colIndex < COL_NUMBER; colIndex++)
             {
                 if (slotMachine[rowIndex, colIndex] == slotMachine[rowIndex - 1, colIndex - 1])
                 {
