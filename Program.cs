@@ -12,21 +12,30 @@ class Program
     {
         Console.WriteLine("   Slot Machine"); //Intro text
         Console.WriteLine("*-*-*-*-*-*-*-*-*-*\n");
+      
 
-        int[,] slotMachine = new int[ROW_NUMBER, COL_NUMBER]; //2D Array with numbers for each slot
+       // int[,] slotMachine = new int[ROW_NUMBER, COL_NUMBER]; //2D Array with numbers for each slot
 
         var rng = new Random(); //Random generator
 
+        int[,] slotMachine = { { 1, 1, 3 }, { 1, 5, 6 }, { 7, 8, 9 } };
+        //slotMachine[0, 0] = 1;
+        //slotMachine[0, 1] = 2;
+        //slotMachine[0, 2] = 3;
+        
+        
         int rowIndex;
         int colIndex;
-        for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++) //Generate random numbers for Slot per row
+     /*   for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++) //Generate random numbers for Slot per row
         {
             for (colIndex = 0; colIndex < COL_NUMBER; colIndex++) //Generate random numbers for Slot per column
             {
+              //  slotMachine[rowIndex, colIndex] = array[0];
+
                 slotMachine[rowIndex, colIndex] = rng.Next(RDM_NUMBER_TOP_END); //Random generator for each slot in machine
             }
         }//end Slot loop
-
+      */
         //Print Slot numbers
         for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++)
         {
@@ -34,7 +43,7 @@ class Program
             {
                 Console.Write(slotMachine[rowIndex, colIndex] + "\t"); //Print random numbers for slot
             }
-            Console.WriteLine("");
+            Console.WriteLine();
         }//end Slot Print loop
 
         //Winning Scenarios
@@ -69,19 +78,18 @@ class Program
         //            Console.WriteLine("Winning diagonal");
         //        }
         //    }
-
         //}//end Winning Diagonal1 for Loop
 
-        for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++) //Winning scenario - Diagonal 2
-        {
-            for (colIndex = COL_NUMBER; colIndex < COL_NUMBER; colIndex++)
-            {
-                if (slotMachine[rowIndex, colIndex] == slotMachine[rowIndex - 1, colIndex - 1])
-                {
-                    Console.WriteLine("Winning diagonal");
-                }
-            }
+        //for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++) //Winning scenario - Diagonal 2
+        //{
+        //    for (colIndex = COL_NUMBER; colIndex < COL_NUMBER; colIndex--)
+        //    {
+        //        if (slotMachine[rowIndex, colIndex] == slotMachine[rowIndex - 1, colIndex - 1])
+        //        {
+        //            Console.WriteLine("Winning diagonal");
+        //        }
+        //    }
 
-        }//end Winning Diagonal2 for Loop
+        //}//end Winning Diagonal2 for Loop
     }//end Main args
 }//end class Program
