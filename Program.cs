@@ -17,7 +17,7 @@ class Program
         // int[,] slotMachine = new int[ROW_NUMBER, COL_NUMBER]; //2D Array with numbers for each slot
         var rng = new Random(); //Random generator
 
-        int[,] slotMachine = { { 1, 1, 1 }, { 1, 1, 6 }, { 1, 8, 1 } };
+        int[,] slotMachine = { { 1, 2, 1 }, { 4, 1, 6 }, { 1, 8, 1 } };
         //slotMachine[0, 0] = 1;
         //slotMachine[0, 1] = 2;
         //slotMachine[0, 2] = 3;
@@ -97,18 +97,18 @@ class Program
         for (rowIndex = 0; rowIndex < ROW_NUMBER - 1; rowIndex++) //Diagonal match - top right
         {
             int diagCounter = 0;
-            for (colIndex = COL_NUMBER; colIndex < COL_NUMBER - 1; colIndex--)
+            for (colIndex = COL_NUMBER - 1; colIndex < COL_NUMBER - 1; colIndex--)
             {
                 if (slotMachine[rowIndex, colIndex] == slotMachine[rowIndex, colIndex + 1])
                 {
                     diagCounter += 1; //counter of matches increases
                 }
             }
-            if (diagCounter == COL_NUMBER - 1) //Counting matching pair values
+            if (diagCounter == ROW_NUMBER - 1) //Counting matching pair values
             {
                 Console.WriteLine("Diagonal match");
             }
 
-        } //end Diagonal Top right match 
-    }//end Main args
+            } //end Diagonal Top right match 
+        }//end Main args
 }//end class Program
