@@ -94,12 +94,21 @@ class Program
             }
         } //end Diagonal Top left match 
 
-        for (rowIndex = 0; rowIndex < ROW_NUMBER - 1; rowIndex++) //Diagonal match - top right
+        //for (int i = ROW_NUMBER - 1; i < ROW_NUMBER - 1; i++)
+        //{
+        //    int diagCounter = 0;
+        //    if (slotMachine[i, COL_NUMBER -1] = slotMachine[i + 1, ])
+        //    {
+
+        //    }
+        //}
+
+        for (rowIndex = 0; rowIndex < ROW_NUMBER - 2; rowIndex++) //Diagonal match - top right
         {
             int diagCounter = 0;
-            for (colIndex = COL_NUMBER - 1; colIndex < COL_NUMBER - 1; colIndex--)
+            for (colIndex = COL_NUMBER - 1; colIndex > 0; colIndex--)
             {
-                if (slotMachine[rowIndex, colIndex] == slotMachine[rowIndex, colIndex + 1])
+                if (slotMachine[rowIndex, colIndex] == slotMachine[rowIndex + 1, colIndex - 1])
                 {
                     diagCounter += 1; //counter of matches increases
                 }
@@ -109,6 +118,6 @@ class Program
                 Console.WriteLine("Diagonal match TEST");
             }
 
-            } //end Diagonal Top right match 
+        } //end Diagonal Top right match 
         }//end Main args
 }//end class Program
