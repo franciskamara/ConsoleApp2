@@ -17,7 +17,7 @@ class Program
         // int[,] slotMachine = new int[ROW_NUMBER, COL_NUMBER]; //2D Array with numbers for each slot
         var rng = new Random(); //Random generator
 
-        int[,] slotMachine = { { 1, 2, 1 }, { 4, 1, 6 }, { 1, 8, 1 } };
+        int[,] slotMachine = { { 1, 1, 1 }, { 1, 1, 6 }, { 1, 8, 1 } };
         //slotMachine[0, 0] = 1;
         //slotMachine[0, 1] = 2;
         //slotMachine[0, 2] = 3;
@@ -64,14 +64,15 @@ class Program
             }
         } //end Row match 
 
-        for (rowIndex = 0; rowIndex < ROW_NUMBER - 1; rowIndex++) //Winning scenario - Column
+        for (colIndex = 0; colIndex < COL_NUMBER; colIndex++)  //Winning scenario - Column
         {
             int colCounter = 0;
-            for (colIndex = 0; colIndex < COL_NUMBER; colIndex++)
+            for (rowIndex = 0; rowIndex < ROW_NUMBER - 1; rowIndex++)
             {
+                //Console.WriteLine("Column");
+                //Console.WriteLine($"Current indexes: [{rowIndex},{colIndex}] | Calculated: [{rowIndex + 1}, {colIndex}]");
                 if (slotMachine[rowIndex, colIndex] == slotMachine[rowIndex + 1, colIndex])
                 {
-                    //Console.WriteLine("Winning column");
                     colCounter += 1; //counter of matches increases
                 }
             }
@@ -84,6 +85,8 @@ class Program
         for (int index = 0; index < ROW_NUMBER - 1; index++) //Diagonal match - top left
         {
             int diagCounter = 0;
+            //Console.WriteLine("Left diagonal");
+            //Console.WriteLine($"Current indexes: [{index}, {index}] | Calculated: [{index +1},{index +1}] ");
             if (slotMachine[index, index] == slotMachine[index + 1, index + 1])
             {
                 diagCounter += 1;
@@ -97,32 +100,17 @@ class Program
         for (rowIndex = 0; rowIndex < ROW_NUMBER - 1; rowIndex++)
         {
             int diagCounter = 0;
-            int colSpecial = COL_NUMBER - 1;
+            int colSpecial = (COL_NUMBER - 1) - rowIndex;
+            //Console.WriteLine("Right diagonal");
+            //Console.WriteLine($"Current indexes: [{rowIndex},{colSpecial}] | Calculated: [{rowIndex + 1}, {colSpecial - 1}] ");
             if (slotMachine[rowIndex, colSpecial] == slotMachine[rowIndex + 1, colSpecial - 1])
             {
                 diagCounter += 1;
             }
-            if (diagCounter == ROW_NUMBER -1)
+            if (diagCounter == ROW_NUMBER - 1)
             {
                 Console.WriteLine("Diagonal match");
             }
         }
-
-        //for (rowIndex = 0; rowIndex < ROW_NUMBER - 2; rowIndex++) //Diagonal match - top right
-        //{
-        //    int diagCounter = 0;
-        //    for (colIndex = COL_NUMBER - 1; colIndex > 0; colIndex--)
-        //    {
-        //        if (slotMachine[rowIndex, colIndex] == slotMachine[rowIndex + 1, colIndex - 1])
-        //        {
-        //            diagCounter += 1; //counter of matches increases
-        //        }
-        //    }
-        //    if (diagCounter == ROW_NUMBER - 1) //Counting matching pair values
-        //    {
-        //        Console.WriteLine("Diagonal match TEST");
-        //    }
-
-        //} //end Diagonal Top right match 
     }//end Main args
 }//end class Program
