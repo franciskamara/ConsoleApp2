@@ -94,30 +94,35 @@ class Program
             }
         } //end Diagonal Top left match 
 
-        //for (int i = ROW_NUMBER - 1; i < ROW_NUMBER - 1; i++)
-        //{
-        //    int diagCounter = 0;
-        //    if (slotMachine[i, COL_NUMBER -1] = slotMachine[i + 1, ])
-        //    {
-
-        //    }
-        //}
-
-        for (rowIndex = 0; rowIndex < ROW_NUMBER - 2; rowIndex++) //Diagonal match - top right
+        for (rowIndex = 0; rowIndex < ROW_NUMBER - 1; rowIndex++)
         {
             int diagCounter = 0;
-            for (colIndex = COL_NUMBER - 1; colIndex > 0; colIndex--)
+            int colSpecial = COL_NUMBER - 1;
+            if (slotMachine[rowIndex, colSpecial] == slotMachine[rowIndex + 1, colSpecial - 1])
             {
-                if (slotMachine[rowIndex, colIndex] == slotMachine[rowIndex + 1, colIndex - 1])
-                {
-                    diagCounter += 1; //counter of matches increases
-                }
+                diagCounter += 1;
             }
-            if (diagCounter == ROW_NUMBER - 1) //Counting matching pair values
+            if (diagCounter == ROW_NUMBER -1)
             {
-                Console.WriteLine("Diagonal match TEST");
+                Console.WriteLine("Diagonal match");
             }
+        }
 
-        } //end Diagonal Top right match 
-        }//end Main args
+        //for (rowIndex = 0; rowIndex < ROW_NUMBER - 2; rowIndex++) //Diagonal match - top right
+        //{
+        //    int diagCounter = 0;
+        //    for (colIndex = COL_NUMBER - 1; colIndex > 0; colIndex--)
+        //    {
+        //        if (slotMachine[rowIndex, colIndex] == slotMachine[rowIndex + 1, colIndex - 1])
+        //        {
+        //            diagCounter += 1; //counter of matches increases
+        //        }
+        //    }
+        //    if (diagCounter == ROW_NUMBER - 1) //Counting matching pair values
+        //    {
+        //        Console.WriteLine("Diagonal match TEST");
+        //    }
+
+        //} //end Diagonal Top right match 
+    }//end Main args
 }//end class Program
