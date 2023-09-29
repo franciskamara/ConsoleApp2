@@ -106,7 +106,7 @@ class Program
             }
             if (diagCounter == ROW_NUMBER - 1) //Counting matching pair values
             {
-                Console.WriteLine("Diagonal match");
+                Console.WriteLine("Diagonal match TEST");
             }
 
             } //end Diagonal Top right match 
