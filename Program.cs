@@ -7,111 +7,136 @@ class Program
     const int COL_NUMBER = 3;
     const int ROW_NUMBER = 3;
     const int RDM_NUMBER_TOP_END = 11;
+    const int WIN_AMOUNT = 10;
 
     static void Main(string[] args)
     {
         Console.WriteLine("   Slot Machine"); //Intro text
         Console.WriteLine("*-*-*-*-*-*-*-*-*-*\n");
 
+        Console.WriteLine("Insert coins");
+        int balance = int.Parse(Console.ReadLine());
 
-        // int[,] slotMachine = new int[ROW_NUMBER, COL_NUMBER]; //2D Array with numbers for each slot
-        var rng = new Random(); //Random generator
+        while (balance > 0)
+        {
+            // int[,] slotMachine = new int[ROW_NUMBER, COL_NUMBER]; //2D Array with numbers for each slot
+            var rng = new Random(); //Random generator
 
-        int[,] slotMachine = { { 1, 2, 1 }, { 4, 1, 6 }, { 1, 8, 1 } };
-        //slotMachine[0, 0] = 1;
-        //slotMachine[0, 1] = 2;
-        //slotMachine[0, 2] = 3;
+            int[,] slotMachine = { { 1, 2, 1 }, { 4, 0, 6 }, { 1, 8, 1 } };
+            //slotMachine[0, 0] = 1;
+            //slotMachine[0, 1] = 2;
+            //slotMachine[0, 2] = 3;
 
+            balance = balance - 1;
 
-        int rowIndex;
-        int colIndex;
-        /*   for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++) //Generate random numbers for Slot per row
-           {
-               for (colIndex = 0; colIndex < COL_NUMBER; colIndex++) //Generate random numbers for Slot per column
+            int rowIndex;
+            int colIndex;
+            /*   for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++) //Generate random numbers for Slot per row
                {
-                 //  slotMachine[rowIndex, colIndex] = array[0];
+                   for (colIndex = 0; colIndex < COL_NUMBER; colIndex++) //Generate random numbers for Slot per column
+                   {
+                     //  slotMachine[rowIndex, colIndex] = array[0];
 
-                   slotMachine[rowIndex, colIndex] = rng.Next(RDM_NUMBER_TOP_END); //Random generator for each slot in machine
-               }
-           }//end Slot loop
-         */
+                       slotMachine[rowIndex, colIndex] = rng.Next(RDM_NUMBER_TOP_END); //Random generator for each slot in machine
+                   }
+               }//end Slot loop
+             */
 
-        //Print Slot numbers
-        for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++)
-        {
-            for (colIndex = 0; colIndex < COL_NUMBER; colIndex++)
+            //Print Slot numbers
+            for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++)
             {
-                Console.Write(slotMachine[rowIndex, colIndex] + "\t"); //Print random numbers for slot
-            }
-            Console.WriteLine();
-        }//end Slot Print loop
-
-        //Winning Scenarios
-        for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++) //Winning scenario - Row
-        {
-            int rowCounter = 0;
-            for (colIndex = 0; colIndex < COL_NUMBER - 1; colIndex++)
-            {
-                if (slotMachine[rowIndex, colIndex] == slotMachine[rowIndex, colIndex + 1])
+                for (colIndex = 0; colIndex < COL_NUMBER; colIndex++)
                 {
-                    //  Console.WriteLine("Winning row");
-                    rowCounter += 1; //counter of matches increases
+                    Console.Write(slotMachine[rowIndex, colIndex] + "\t"); //Print random numbers for slot
                 }
-            }
-            if (rowCounter == COL_NUMBER - 1) //Counting matching pair values
-            {
-                Console.WriteLine("Row match");
-            }
-        } //end Row match 
+                Console.WriteLine();
+            }//end Slot Print loop
 
-        for (colIndex = 0; colIndex < COL_NUMBER; colIndex++) //Winning scenario - Column
-        {
-            int colCounter = 0;
+            //Winning Scenarios
+            for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++) //Row match
+            {
+                int rowCounter = 0;
+                for (colIndex = 0; colIndex < COL_NUMBER - 1; colIndex++)
+                {
+                    if (slotMachine[rowIndex, colIndex] == slotMachine[rowIndex, colIndex + 1])
+                    {
+                        rowCounter += 1; //counter of matches increases
+                    }
+                }
+                if (rowCounter == COL_NUMBER - 1) //Counting matching pair values
+                {
+                    Console.WriteLine("Row match");
+                    balance = balance + WIN_AMOUNT;
+                }
+            } //end Row match 
+
+            for (colIndex = 0; colIndex < COL_NUMBER; colIndex++) //Column match
+            {
+                int colCounter = 0;
+                for (rowIndex = 0; rowIndex < ROW_NUMBER - 1; rowIndex++)
+                {
+                    if (slotMachine[rowIndex, colIndex] == slotMachine[rowIndex + 1, colIndex])
+                    {
+                        colCounter += 1; //counter of matches increases
+                    }
+                }
+                if (colCounter == ROW_NUMBER - 1) //Counting matching pair values 
+                {
+                    Console.WriteLine("Column match");
+                    balance = balance + WIN_AMOUNT;
+                }
+            }//end Column match 
+
+            int diagCounter = 0; //Diagonal match - top Left
+            for (int index = 0; index < ROW_NUMBER - 1; index++)
+            {
+                if (slotMachine[index, index] == slotMachine[index + 1, index + 1])
+                {
+                    diagCounter += 1;
+
+                }
+            } //end Diagonal Top left match
+            if (diagCounter == ROW_NUMBER - 1)
+            {
+                Console.WriteLine("Diagonal match");
+                balance = balance + WIN_AMOUNT;
+            }
+
+            int diag2Counter = 0; //Diagonal match - top Right
             for (rowIndex = 0; rowIndex < ROW_NUMBER - 1; rowIndex++)
             {
-                //Console.WriteLine("Column");
-                //Console.WriteLine($"Current indexes: [{rowIndex},{colIndex}] | Calculated: [{rowIndex + 1}, {colIndex}]");
-                if (slotMachine[rowIndex, colIndex] == slotMachine[rowIndex + 1, colIndex])
+                int colSpecial = (COL_NUMBER - 1) - rowIndex;
+                if (slotMachine[rowIndex, colSpecial] == slotMachine[rowIndex + 1, colSpecial - 1])
                 {
-                    colCounter += 1; //counter of matches increases
+                    diag2Counter += 1;
                 }
             }
-            if (colCounter == ROW_NUMBER - 1) //Counting matching pair values 
+            if (diagCounter == ROW_NUMBER - 1)
             {
-                Console.WriteLine("Column match");
+                Console.WriteLine("Diagonal match 2");
+                balance = balance + WIN_AMOUNT;
             }
-        }//end Column match 
 
-        int diagCounter = 0; //Diagonal match - top left
-        for (int index = 0; index < ROW_NUMBER - 1; index++) 
-        {
-            //Console.WriteLine("Left diagonal");
-            //Console.WriteLine($"Current indexes: [{index}, {index}] | Calculated: [{index +1},{index +1}] ");
-            if (slotMachine[index, index] == slotMachine[index + 1, index + 1])
-            {
-                diagCounter += 1;
-                
-            }
-        } //end Diagonal Top left match
-        if (diagCounter == ROW_NUMBER - 1)
-        {
-            Console.WriteLine("Diagonal match");
-        }
+            Console.WriteLine($"Your balance is now: {balance}\n");
 
-        int diag2Counter = 0; //Diagonal match - top right
-        for (rowIndex = 0; rowIndex < ROW_NUMBER - 1; rowIndex++)
-        {
-            int colSpecial = (COL_NUMBER - 1) - rowIndex;
-            //Console.WriteLine("Right diagonal");
-            //Console.WriteLine($"Current indexes: [{rowIndex},{colSpecial}] | Calculated: [{rowIndex + 1}, {colSpecial - 1}] ");
-            if (slotMachine[rowIndex, colSpecial] == slotMachine[rowIndex + 1, colSpecial - 1])
+            //prompts user to Restart or Exit game
+            Console.WriteLine("Spin again? y / n");
+            char endGame = Console.ReadKey().KeyChar;
+            if (endGame == 'y')
             {
-                diag2Counter += 1;
+                Console.Clear();
+                continue;
             }
-        }
-        if (diagCounter == ROW_NUMBER - 1)
+            else if (endGame == 'n')
+            {
+                Console.Clear();
+                Console.WriteLine($"Balance returned: {balance}");
+                return;
+            }
+        }//end while Loop
+        if (balance == 0)
         {
-            Console.WriteLine("Diagonal match 2");
+            Console.WriteLine("Game over. You ran out of money.");
         }
     }//end Main args
 }//end class Program
