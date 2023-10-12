@@ -7,40 +7,41 @@ class Program
     const int COL_NUMBER = 3;
     const int ROW_NUMBER = 3;
     const int RDM_NUMBER_TOP_END = 11;
-    const int WIN_AMOUNT = 10;
+    const int WIN_AMOUNT = 3;
 
     static void Main(string[] args)
     {
         Console.WriteLine("   Slot Machine"); //Intro text
         Console.WriteLine("*-*-*-*-*-*-*-*-*-*\n");
 
-        Console.WriteLine("Insert coins");
+        Console.Write("Insert coins: ");
         int balance = int.Parse(Console.ReadLine());
+
+        int[,] slotMachine = new int[ROW_NUMBER, COL_NUMBER]; //2D Array with numbers for each slot
+        Random rng = new Random(); //Random generator
 
         while (balance > 0)
         {
-            // int[,] slotMachine = new int[ROW_NUMBER, COL_NUMBER]; //2D Array with numbers for each slot
-            var rng = new Random(); //Random generator
-
+            /*
+                   For future reference
             int[,] slotMachine = { { 1, 2, 1 }, { 4, 0, 6 }, { 1, 8, 1 } };
-            //slotMachine[0, 0] = 1;
-            //slotMachine[0, 1] = 2;
-            //slotMachine[0, 2] = 3;
+            slotMachine[0, 0] = 1;
+            slotMachine[0, 1] = 2;
+            slotMachine[0, 2] = 3;
+            */
 
             balance = balance - 1;
 
             int rowIndex;
             int colIndex;
-            /*   for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++) //Generate random numbers for Slot per row
-               {
-                   for (colIndex = 0; colIndex < COL_NUMBER; colIndex++) //Generate random numbers for Slot per column
-                   {
-                     //  slotMachine[rowIndex, colIndex] = array[0];
+            for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++) //Generate random numbers for Slot per row
+            {
+                for (colIndex = 0; colIndex < COL_NUMBER; colIndex++) //Generate random numbers for Slot per column
+                {
+                    slotMachine[rowIndex, colIndex] = rng.Next(RDM_NUMBER_TOP_END); //Random generator for each slot in machine
+                }
+            }//end Slot loop
 
-                       slotMachine[rowIndex, colIndex] = rng.Next(RDM_NUMBER_TOP_END); //Random generator for each slot in machine
-                   }
-               }//end Slot loop
-             */
 
             //Print Slot numbers
             for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++)
@@ -100,7 +101,7 @@ class Program
             {
                 Console.WriteLine("Diagonal match");
                 balance = balance + WIN_AMOUNT;
-            }
+            }//end Diagonal match
 
             int diag2Counter = 0; //Diagonal match - top Right
             for (rowIndex = 0; rowIndex < ROW_NUMBER - 1; rowIndex++)
@@ -125,7 +126,6 @@ class Program
             if (endGame == 'y')
             {
                 Console.Clear();
-                continue;
             }
             else if (endGame == 'n')
             {
@@ -137,6 +137,19 @@ class Program
         if (balance == 0)
         {
             Console.WriteLine("Game over. You ran out of money.");
+            Console.WriteLine($"Insert more money to play again? y / n");
+        }
+        char restartGame = Console.ReadKey().KeyChar;
+        if (restartGame == 'y')
+        {
+            Console.Clear();
+            Main(args);
+        }
+        else
+        {
+            Console.Clear();
+            Console.WriteLine("Thanks for playing.");
+            return;
         }
     }//end Main args
 }//end class Program
