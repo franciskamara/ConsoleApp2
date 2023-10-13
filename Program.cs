@@ -134,22 +134,22 @@ class Program
                 return;
             }
         }//end while Loop
-        if (balance == 0)
+        if (balance <= 0)
         {
             Console.WriteLine("Game over. You ran out of money.");
             Console.WriteLine($"Insert more money to play again? y / n");
         }
         char restartGame = Console.ReadKey().KeyChar;
+        Console.Clear();
+
         if (restartGame == 'y')
         {
-            Console.Clear();
             Main(args);
         }
-        else
+        else if (restartGame == 'n')
         {
-            Console.Clear();
             Console.WriteLine("Thanks for playing.");
-            return;
         }
+
     }//end Main args
 }//end class Program
