@@ -14,8 +14,8 @@ class Program
         int balance;
         string gameEndMessage = "Thanks for playing";
 
-        bool startGame;
-        while (true)
+        bool startGame = true;
+        while (startGame)
         {
 
             Console.WriteLine("   Slot Machine"); //Intro text
@@ -129,15 +129,16 @@ class Program
                 Console.WriteLine($"Your balance is now: {balance}\n");
 
                 Console.WriteLine("Spin again? y / n");//prompts user to Restart or Exit game
-                char endGame = Console.ReadKey().KeyChar;
+                char spinAgain = Console.ReadKey().KeyChar;
                 Console.Clear();
-                if (endGame == 'y')
+                if (spinAgain == 'y')
                 {
+                    continue;
                 }
                 else
                 {
                     Console.WriteLine($"Balance returned: {balance}");
-                    Console.WriteLine(gameEndMessage);
+                    Console.WriteLine($"\n{gameEndMessage}");
                     return;
                 }
             }//end balance while Loop
@@ -159,7 +160,6 @@ class Program
                 Console.WriteLine(gameEndMessage);
                 return;
             }
-        }//end startGame loop
-
+        }//end startGame while loop
     }//end Main args
 }//end class Program
