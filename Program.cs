@@ -131,16 +131,16 @@ class Program
                 Console.WriteLine("Spin again? y / n");//prompts user to Restart or Exit game
                 char spinAgain = Console.ReadKey().KeyChar;
                 Console.Clear();
-                if (spinAgain == 'y')
-                {
-                    continue;
-                }
-                else
+                if (spinAgain != 'y')
                 {
                     Console.WriteLine($"Balance returned: {balance}");
                     Console.WriteLine($"\n{gameEndMessage}");
-                    return;
+                    break;
                 }
+                //else
+                //{
+                //    return;
+                //}
             }//end balance while Loop
 
             if (balance <= 0)
@@ -149,16 +149,12 @@ class Program
                 Console.WriteLine($"Insert more money to play again? y / n");
             }
 
-            char restartGame = Console.ReadKey().KeyChar;
+            char restartGame = Console.ReadKey().KeyChar; //Option to restart the game by pressing 'y'; if not then end the game
             Console.Clear();
-            if (restartGame == 'y')
-            {
-                startGame = true;
-            }
-            else
+            if (restartGame != 'y')
             {
                 Console.WriteLine(gameEndMessage);
-                return;
+                startGame = true;
             }
         }//end startGame while loop
     }//end Main args
