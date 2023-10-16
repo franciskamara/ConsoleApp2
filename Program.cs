@@ -155,6 +155,7 @@ class Program
             {
                 Console.WriteLine(gameEndMessage);
                 startGame = true;
+                break;
             }
         }//end startGame while loop
     }//end Main args
