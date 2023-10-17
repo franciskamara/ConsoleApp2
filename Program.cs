@@ -65,16 +65,31 @@ class Program
                 //Winning Scenarios
                 if (gameTypeSelection == selectRow)
                 {
-                    Console.WriteLine("\nSelect how many lines you wish to play? 1, 2, or 3"); int lineNumberSelection = int.Parse(Console.ReadLine());
+                    Console.WriteLine("\nSelect how many lines you wish to play? 1, 2, or 3");
+                    int lineNumberSelection = int.Parse(Console.ReadLine());
 
-                    if (balance >= lineNumberSelection)
+                    if (balance >= lineNumberSelection) //Reduce money by how many lines to play
                     {
                         balance = balance - lineNumberSelection;
                     }
-                    else if (lineNumberSelection > balance)
+                    else if (lineNumberSelection > balance) //Where line selection is more than the available balance
                     {
-                        Console.WriteLine("\nNot enough money to play.");
-                        break;
+                        Console.WriteLine("\nNot enough money to play. Add more money? y / n");
+
+                        char userInput = Console.ReadKey().KeyChar;
+                        if (userInput == 'y')
+                        {
+                            Console.Write("\nAmount: ");
+                            int amount = int.Parse(Console.ReadLine());
+                            balance = balance + amount;
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Console.WriteLine($"Balance returned: {balance}");
+                            Console.WriteLine("\nThanks for playing");
+                            return;
+                        }
                     }
 
                     for (rowIndex = 0; rowIndex < lineNumberSelection; rowIndex++) //Row match
@@ -101,14 +116,28 @@ class Program
                     Console.WriteLine("\nSelect how many lines you wish to play? 1, 2, or 3");
                     int lineNumberSelection = int.Parse(Console.ReadLine());
 
-                    if (balance >= lineNumberSelection)
+                    if (balance >= lineNumberSelection) //Reduce money by how many lines to play
                     {
                         balance = balance - lineNumberSelection;
                     }
-                    else if (lineNumberSelection > balance)
+                    else if (lineNumberSelection > balance) //Where line selection is more than the available balance
                     {
-                        Console.WriteLine("\nNot enough money to play.");
-                        break;
+                        Console.WriteLine("\nNot enough money to play. Add more money? y / n");
+
+                        char userInput = Console.ReadKey().KeyChar;
+                        if (userInput == 'y')
+                        {
+                            Console.Write("\nAmount: ");
+                            int amount = int.Parse(Console.ReadLine());
+                            balance = balance + amount;
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Console.WriteLine($"Balance returned: {balance}");
+                            Console.WriteLine("\nThanks for playing");
+                            return;
+                        }
                     }
 
                     for (colIndex = 0; colIndex < lineNumberSelection; colIndex++) //Column match
@@ -134,14 +163,28 @@ class Program
                     Console.WriteLine("\nSelect how many lines you wish to play? 1 or 2");
                     int lineNumberSelection = int.Parse(Console.ReadLine());
 
-                    if (balance >= lineNumberSelection)
+                    if (balance >= lineNumberSelection) //Reduce money by how many lines to play
                     {
                         balance = balance - lineNumberSelection;
                     }
-                    else if (lineNumberSelection > balance)
+                    else if (lineNumberSelection > balance) //Where line selection is more than the available balance
                     {
-                        Console.WriteLine("\nNot enough money to play.");
-                        break;
+                        Console.WriteLine("\nNot enough money to play. Add more money? y / n");
+
+                        char userInput = Console.ReadKey().KeyChar;
+                        if (userInput == 'y')
+                        {
+                            Console.Write("\nAmount: ");
+                            int amount = int.Parse(Console.ReadLine());
+                            balance = balance + amount;
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Console.WriteLine($"Balance returned: {balance}");
+                            Console.WriteLine("\nThanks for playing");
+                            return;
+                        }
                     }
 
                     int diagCounter = 0; //Diagonal match - top Left
@@ -188,22 +231,23 @@ class Program
 
                 Console.WriteLine($"Your balance is now: {balance}\n");
 
-                Console.WriteLine("Spin again? y / n");//prompts user to Restart or Exit game
+                Console.WriteLine("Spin again? y / n");//User selects to spin again or not
                 char spinAgain = Console.ReadKey().KeyChar;
                 Console.Clear();
                 if (spinAgain != 'y')
                 {
                     Console.WriteLine($"Balance returned: {balance}");
                     Console.WriteLine("\nThanks for playing");
-                    break;
+                    return;
                 }
             }//end balance while Loop
 
-            if (balance <= 0)
+            if (balance <= 0)//when the balance is 0 or less
             {
                 Console.WriteLine("You ran out of money.");
                 Console.WriteLine($"Insert more money to play again? y / n");
             }
+
             char restartGame = Console.ReadKey().KeyChar; //Option to restart the game by pressing 'y'; if not then end the game
             Console.Clear();
             if (restartGame != 'y')
