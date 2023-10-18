@@ -33,10 +33,14 @@ class Program
             Random rng = new Random(); //Random generator
 
             char gameTypeSelection = ' ';
-            while (gameTypeSelection != USER_SELECTION_ROWS && gameTypeSelection != USER_SELECTION_COLUMNS && gameTypeSelection != USER_SELECTION_DIAGONALS)
+            while (gameTypeSelection != USER_SELECTION_ROWS
+                && gameTypeSelection != USER_SELECTION_COLUMNS
+                && gameTypeSelection != USER_SELECTION_DIAGONALS)
             {
                 Console.Clear();
-                Console.WriteLine($"Choose your game? \n- Play for Rows ({USER_SELECTION_ROWS}) \n- Play for Columns ({USER_SELECTION_COLUMNS}) \n- Play for Diagonals ({USER_SELECTION_DIAGONALS})");
+                Console.WriteLine($"Choose your game? \n- Play for Rows ({USER_SELECTION_ROWS}) " +
+                    $"\n- Play for Columns ({USER_SELECTION_COLUMNS}) " +
+                    $"\n- Play for Diagonals ({USER_SELECTION_DIAGONALS})");
                 Console.WriteLine();
                 gameTypeSelection = Console.ReadKey().KeyChar;
             }
@@ -52,8 +56,6 @@ class Program
                 slotMachine[0, 2] = 3;
                 */
 
-                //balance = balance - 1;
-
                 int rowIndex;
                 int colIndex;
                 for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++) //Generate random numbers for Slot per row
@@ -63,7 +65,6 @@ class Program
                         slotMachine[rowIndex, colIndex] = rng.Next(RDM_NUMBER_TOP_END); //Random generator for each slot in machine
                     }
                 }//end Slot loop
-
 
                 //Winning Scenario: Row
                 if (gameTypeSelection == USER_SELECTION_ROWS)
@@ -77,11 +78,12 @@ class Program
                     }
                     else //Where line selection is more than the available balance
                     {
-                            Console.Clear();
-                            Console.WriteLine($"Your current balance: {balance}");
-                            Console.Write("\nNot enough money to play chosen amount of lines.\nEnter another number of lines to play: ");
-                            lineNumberSelection = int.Parse(Console.ReadLine());
-                            balance = balance - lineNumberSelection;
+                        Console.Clear();
+                        Console.WriteLine($"Your current balance: {balance}");
+                        Console.Write("\nNot enough money to play chosen amount of lines." +
+                            "\nEnter another number of lines to play: ");
+                        lineNumberSelection = int.Parse(Console.ReadLine());
+                        balance = balance - lineNumberSelection;
                     }
 
 
@@ -116,12 +118,13 @@ class Program
                     }
                     else //Where line selection is more than the available balance
                     {
- 
-                            Console.Clear();
-                            Console.WriteLine($"Your current balance: {balance}");
-                            Console.Write("\nNot enough money to play chosen amount of lines. \nEnter another number of lines to play: ");
-                            lineNumberSelection = int.Parse(Console.ReadLine());
-                            balance = balance - lineNumberSelection;
+
+                        Console.Clear();
+                        Console.WriteLine($"Your current balance: {balance}");
+                        Console.Write("\nNot enough money to play chosen amount of lines." +
+                            "\nEnter another number of lines to play: ");
+                        lineNumberSelection = int.Parse(Console.ReadLine());
+                        balance = balance - lineNumberSelection;
                     }
 
                     for (colIndex = 0; colIndex < lineNumberSelection; colIndex++) //Column match
@@ -154,11 +157,12 @@ class Program
                     }
                     else //Where line selection is more than the available balance
                     {
-                            Console.Clear();
-                            Console.WriteLine($"Your current balance: {balance}");
-                            Console.Write("\nNot enough money to play chosen amount of lines. \nEnter another number of lines to play: ");
-                            lineNumberSelection = int.Parse(Console.ReadLine());
-                            balance = balance - lineNumberSelection;
+                        Console.Clear();
+                        Console.WriteLine($"Your current balance: {balance}");
+                        Console.Write("\nNot enough money to play chosen amount of lines." +
+                            "\nEnter another number of lines to play: ");
+                        lineNumberSelection = int.Parse(Console.ReadLine());
+                        balance = balance - lineNumberSelection;
                     }
 
                     int diagCounter = 0; //Diagonal match - top Left
@@ -228,10 +232,6 @@ class Program
             {
                 Console.WriteLine("Thanks for playing");
                 break;
-            }
-            else
-            {
-                startGame = true;
             }
         }//end startGame while loop
     }//end Main args
