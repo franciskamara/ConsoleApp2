@@ -36,7 +36,7 @@ class Program
             while (gameTypeSelection != USER_SELECTION_ROWS && gameTypeSelection != USER_SELECTION_COLUMNS && gameTypeSelection != USER_SELECTION_DIAGONALS)
             {
                 Console.Clear();
-                Console.WriteLine($"Please select your game? \n- Play for Rows ({USER_SELECTION_ROWS}) \n- Play for Columns ({USER_SELECTION_COLUMNS}) \n- Play for Diagonals ({USER_SELECTION_DIAGONALS})");
+                Console.WriteLine($"Choose your game? \n- Play for Rows ({USER_SELECTION_ROWS}) \n- Play for Columns ({USER_SELECTION_COLUMNS}) \n- Play for Diagonals ({USER_SELECTION_DIAGONALS})");
                 Console.WriteLine();
                 gameTypeSelection = Console.ReadKey().KeyChar;
             }
@@ -77,15 +77,13 @@ class Program
                     }
                     else //Where line selection is more than the available balance
                     {
-                        while (balance < lineNumberSelection)
-                        {
                             Console.Clear();
                             Console.WriteLine($"Your current balance: {balance}");
-                            Console.Write("\nNot enough money to play chosen amount of lines. \nEnter another number of lines to play: ");
+                            Console.Write("\nNot enough money to play chosen amount of lines.\nEnter another number of lines to play: ");
                             lineNumberSelection = int.Parse(Console.ReadLine());
                             balance = balance - lineNumberSelection;
-                        }
                     }
+
 
                     for (rowIndex = 0; rowIndex < lineNumberSelection; rowIndex++) //Row match
                     {
@@ -107,7 +105,7 @@ class Program
                 } //end Row if statement 
 
                 // Winning Scenario: Column
-                if (gameTypeSelection == USER_SELECTION_COLUMNS) 
+                if (gameTypeSelection == USER_SELECTION_COLUMNS)
                 {
                     Console.WriteLine("\nSelect how many lines you wish to play? 1, 2, or 3");
                     int lineNumberSelection = int.Parse(Console.ReadLine());
@@ -118,14 +116,12 @@ class Program
                     }
                     else //Where line selection is more than the available balance
                     {
-                        while (balance < lineNumberSelection)
-                        {
+ 
                             Console.Clear();
                             Console.WriteLine($"Your current balance: {balance}");
                             Console.Write("\nNot enough money to play chosen amount of lines. \nEnter another number of lines to play: ");
                             lineNumberSelection = int.Parse(Console.ReadLine());
                             balance = balance - lineNumberSelection;
-                        }
                     }
 
                     for (colIndex = 0; colIndex < lineNumberSelection; colIndex++) //Column match
@@ -158,14 +154,11 @@ class Program
                     }
                     else //Where line selection is more than the available balance
                     {
-                        while (balance < lineNumberSelection)
-                        {
                             Console.Clear();
                             Console.WriteLine($"Your current balance: {balance}");
                             Console.Write("\nNot enough money to play chosen amount of lines. \nEnter another number of lines to play: ");
                             lineNumberSelection = int.Parse(Console.ReadLine());
                             balance = balance - lineNumberSelection;
-                        }
                     }
 
                     int diagCounter = 0; //Diagonal match - top Left
@@ -235,6 +228,10 @@ class Program
             {
                 Console.WriteLine("Thanks for playing");
                 break;
+            }
+            else
+            {
+                startGame = true;
             }
         }//end startGame while loop
     }//end Main args
