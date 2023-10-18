@@ -4,17 +4,20 @@ namespace SlotMachine; // Note: actual namespace depends on the project name.
 
 class Program
 {
+    // Game play constants
     const int COL_NUMBER = 3;
     const int ROW_NUMBER = 3;
     const int RDM_NUMBER_TOP_END = 11;
     const int WIN_AMOUNT = 10;
 
+    //User game selection constants
+    const char USER_SELECTION_ROWS = 'r';
+    const char USER_SELECTION_COLUMNS = 'c';
+    const char USER_SELECTION_DIAGONALS = 'd';
+
     static void Main(string[] args)
     {
         int balance;
-        char selectRow = 'r';
-        char selectColumn = 'c';
-        char selectDiagonal = 'd';
 
         bool startGame = true;
         while (startGame)
@@ -30,10 +33,10 @@ class Program
             Random rng = new Random(); //Random generator
 
             char gameTypeSelection = ' ';
-            while (gameTypeSelection != selectRow && gameTypeSelection != selectColumn && gameTypeSelection != selectDiagonal)
+            while (gameTypeSelection != USER_SELECTION_ROWS && gameTypeSelection != USER_SELECTION_COLUMNS && gameTypeSelection != USER_SELECTION_DIAGONALS)
             {
                 Console.Clear();
-                Console.WriteLine($"Please select your game? \n- Play for Rows ({selectRow}) \n- Play for Columns ({selectColumn}) \n- Play for Diagonals ({selectDiagonal})");
+                Console.WriteLine($"Please select your game? \n- Play for Rows ({USER_SELECTION_ROWS}) \n- Play for Columns ({USER_SELECTION_COLUMNS}) \n- Play for Diagonals ({USER_SELECTION_DIAGONALS})");
                 Console.WriteLine();
                 gameTypeSelection = Console.ReadKey().KeyChar;
             }
@@ -63,7 +66,7 @@ class Program
 
 
                 //Winning Scenario: Row
-                if (gameTypeSelection == selectRow)
+                if (gameTypeSelection == USER_SELECTION_ROWS)
                 {
                     Console.WriteLine("\nSelect how many lines you wish to play? 1, 2, or 3");
                     int lineNumberSelection = int.Parse(Console.ReadLine());
@@ -104,7 +107,7 @@ class Program
                 } //end Row if statement 
 
                 // Winning Scenario: Column
-                if (gameTypeSelection == selectColumn) 
+                if (gameTypeSelection == USER_SELECTION_COLUMNS) 
                 {
                     Console.WriteLine("\nSelect how many lines you wish to play? 1, 2, or 3");
                     int lineNumberSelection = int.Parse(Console.ReadLine());
@@ -144,7 +147,7 @@ class Program
                 }// end Column if statement 
 
                 // Winning Scenario: Diagonal
-                if (gameTypeSelection == selectDiagonal)
+                if (gameTypeSelection == USER_SELECTION_DIAGONALS)
                 {
                     Console.WriteLine("\nSelect how many lines you wish to play? 1 or 2");
                     int lineNumberSelection = int.Parse(Console.ReadLine());
