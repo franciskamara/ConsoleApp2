@@ -78,11 +78,13 @@ class Program
                     }
                     else //Where line selection is more than the available balance
                     {
-                        Console.Clear();
-                        Console.WriteLine($"Your current balance: {balance}");
-                        Console.Write("\nNot enough money to play chosen amount of lines." +
-                            "\nEnter another number of lines to play: ");
-                        lineNumberSelection = int.Parse(Console.ReadLine());
+                        while (balance < lineNumberSelection)
+                        {
+                            Console.Clear();
+                            Console.WriteLine($"Your current balance: {balance}");
+                            Console.Write("\nNot enough money to play chosen amount of lines.\nEnter another number of lines to play: ");
+                            lineNumberSelection = int.Parse(Console.ReadLine());
+                        }
                         balance = balance - lineNumberSelection;
                     }
 
@@ -118,12 +120,13 @@ class Program
                     }
                     else //Where line selection is more than the available balance
                     {
-
-                        Console.Clear();
-                        Console.WriteLine($"Your current balance: {balance}");
-                        Console.Write("\nNot enough money to play chosen amount of lines." +
-                            "\nEnter another number of lines to play: ");
-                        lineNumberSelection = int.Parse(Console.ReadLine());
+                        while (balance < lineNumberSelection)
+                        {
+                            Console.Clear();
+                            Console.WriteLine($"Your current balance: {balance}");
+                            Console.Write("\nNot enough money to play chosen amount of lines.\nEnter another number of lines to play: ");
+                            lineNumberSelection = int.Parse(Console.ReadLine());
+                        }
                         balance = balance - lineNumberSelection;
                     }
 
@@ -157,11 +160,13 @@ class Program
                     }
                     else //Where line selection is more than the available balance
                     {
-                        Console.Clear();
-                        Console.WriteLine($"Your current balance: {balance}");
-                        Console.Write("\nNot enough money to play chosen amount of lines." +
-                            "\nEnter another number of lines to play: ");
-                        lineNumberSelection = int.Parse(Console.ReadLine());
+                        while (balance < lineNumberSelection)
+                        {
+                            Console.Clear();
+                            Console.WriteLine($"Your current balance: {balance}");
+                            Console.Write("\nNot enough money to play chosen amount of lines.\nEnter another number of lines to play: ");
+                            lineNumberSelection = int.Parse(Console.ReadLine());
+                        }
                         balance = balance - lineNumberSelection;
                     }
 
@@ -230,7 +235,7 @@ class Program
             Console.Clear();
             if (restartGame != 'y')
             {
-                Console.WriteLine("Thanks for playing");
+                Console.WriteLine("Thanks for playing!");
                 break;
             }
         }//end startGame while loop
