@@ -74,7 +74,6 @@ class Program
 
                     if (balance >= lineNumberSelection) //Reduce money by how many lines to play
                     {
-                        balance = balance - lineNumberSelection;
                     }
                     else //Where line selection is more than the available balance
                     {
@@ -85,9 +84,9 @@ class Program
                             Console.Write("\nNot enough money to play chosen amount of lines.\nEnter another number of lines to play: ");
                             lineNumberSelection = int.Parse(Console.ReadLine());
                         }
-                        balance = balance - lineNumberSelection;
                     }
-
+                    balance = balance - lineNumberSelection;
+                    Console.Clear();
 
                     for (rowIndex = 0; rowIndex < lineNumberSelection; rowIndex++) //Row match
                     {
@@ -116,7 +115,6 @@ class Program
 
                     if (balance >= lineNumberSelection) //Reduce money by how many lines to play
                     {
-                        balance = balance - lineNumberSelection;
                     }
                     else //Where line selection is more than the available balance
                     {
@@ -127,8 +125,9 @@ class Program
                             Console.Write("\nNot enough money to play chosen amount of lines.\nEnter another number of lines to play: ");
                             lineNumberSelection = int.Parse(Console.ReadLine());
                         }
-                        balance = balance - lineNumberSelection;
                     }
+                    balance = balance - lineNumberSelection;
+                    Console.Clear();
 
                     for (colIndex = 0; colIndex < lineNumberSelection; colIndex++) //Column match
                     {
@@ -156,7 +155,6 @@ class Program
 
                     if (balance >= lineNumberSelection) //Reduce money by how many lines to play
                     {
-                        balance = balance - lineNumberSelection;
                     }
                     else //Where line selection is more than the available balance
                     {
@@ -167,8 +165,9 @@ class Program
                             Console.Write("\nNot enough money to play chosen amount of lines.\nEnter another number of lines to play: ");
                             lineNumberSelection = int.Parse(Console.ReadLine());
                         }
-                        balance = balance - lineNumberSelection;
                     }
+                    balance = balance - lineNumberSelection;
+                    Console.Clear();
 
                     int diagCounter = 0; //Diagonal match - top Left
                     for (int index = 0; index < lineNumberSelection - 1; index++)
