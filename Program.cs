@@ -1,4 +1,5 @@
 ﻿using System;
+using Slot_Machine;
 
 namespace SlotMachine; // Note: actual namespace depends on the project name.
 
@@ -22,13 +23,16 @@ class Program
         bool startGame = true;
         while (startGame)
         {
+            UIMethods.DisplayWelcomeMessage();
+            //Console.WriteLine("   Slot Machine"); //Intro text
+            //Console.WriteLine("*-*-*-*-*-*-*-*-*-*");
 
-            Console.WriteLine("   Slot Machine"); //Intro text
-            Console.WriteLine("*-*-*-*-*-*-*-*-*-*");
-
-            Console.Write("\nInsert coins: ");
+            //UIMethods.InsertMoneyToPlay();
+            //{ balance; }
+            Console.Write("\nInsert coins to play: ");
             balance = int.Parse(Console.ReadLine());
 
+            //UIMethods.RandomNumberGen();
             int[,] slotMachine = new int[ROW_NUMBER, COL_NUMBER]; //2D Array with numbers for each slot
             Random rng = new Random(); //Random generator
 
@@ -37,8 +41,10 @@ class Program
                 && gameTypeSelection != USER_SELECTION_COLUMNS
                 && gameTypeSelection != USER_SELECTION_DIAGONALS)
             {
+                //UIMethods.UserSelectsGamePlay();
                 Console.Clear();
-                Console.WriteLine($"Choose your game? \n- Play for Rows ({USER_SELECTION_ROWS}) " +
+                Console.WriteLine($"Choose your game!" +
+                    $"\n- Play for Rows ({USER_SELECTION_ROWS}) " +
                     $"\n- Play for Columns ({USER_SELECTION_COLUMNS}) " +
                     $"\n- Play for Diagonals ({USER_SELECTION_DIAGONALS})");
                 Console.WriteLine();
@@ -69,7 +75,7 @@ class Program
                 //Winning Scenario: Row
                 if (gameTypeSelection == USER_SELECTION_ROWS)
                 {
-                    Console.WriteLine("\nSelect how many lines you wish to play? 1, 2, or 3");
+                    UIMethods.QuestionForRowAndColumnsPlay();
                     int lineNumberSelection = int.Parse(Console.ReadLine());
 
                     if (balance >= lineNumberSelection) //Reduce money by how many lines to play
@@ -110,7 +116,7 @@ class Program
                 // Winning Scenario: Column
                 if (gameTypeSelection == USER_SELECTION_COLUMNS)
                 {
-                    Console.WriteLine("\nSelect how many lines you wish to play? 1, 2, or 3");
+                    UIMethods.QuestionForRowAndColumnsPlay();
                     int lineNumberSelection = int.Parse(Console.ReadLine());
 
                     if (balance >= lineNumberSelection) //Reduce money by how many lines to play
@@ -121,7 +127,7 @@ class Program
                         while (balance < lineNumberSelection)
                         {
                             Console.Clear();
-                            Console.WriteLine($"Your current balance: {balance}");
+                            Console.WriteLine($"Your current balance is {balance}");
                             Console.Write("\nNot enough money to play chosen amount of lines.\nEnter another number of lines to play: ");
                             lineNumberSelection = int.Parse(Console.ReadLine());
                         }
@@ -150,7 +156,7 @@ class Program
                 // Winning Scenario: Diagonal
                 if (gameTypeSelection == USER_SELECTION_DIAGONALS)
                 {
-                    Console.WriteLine("\nSelect how many lines you wish to play? 1 or 2");
+                    UIMethods.QuestionForDiagonalPlays();
                     int lineNumberSelection = int.Parse(Console.ReadLine());
 
                     if (balance >= lineNumberSelection) //Reduce money by how many lines to play
@@ -209,7 +215,7 @@ class Program
                         Console.Write(slotMachine[rowIndex, colIndex] + "\t"); //Print random numbers for slot
                     }
                     Console.WriteLine();
-                }//end Slot Print loop
+                }//end Print Slot numbers for statement
 
                 Console.WriteLine($"Your balance is now: {balance}\n");
 
@@ -222,7 +228,7 @@ class Program
                     Console.WriteLine("\nThanks for playing");
                     return;
                 }
-            }//end balance while Loop
+            }//end (balance>0) While Loop
 
             if (balance <= 0)//when the balance is 0 or less
             {
@@ -237,6 +243,7 @@ class Program
                 Console.WriteLine("Thanks for playing!");
                 break;
             }
-        }//end startGame while loop
+        }//end startGame While loop
     }//end Main args
+
 }//end class Program
