@@ -23,11 +23,11 @@ class Program
         bool startGame = true;
         while (startGame)
         {
-            UIMethods.DisplayWelcomeMessage();
+            balance = UIMethods.DisplayWelcomeMessage();
             //Console.WriteLine("   Slot Machine"); //Intro text
             //Console.WriteLine("*-*-*-*-*-*-*-*-*-*");
 
-            //UIMethods.InsertMoneyToPlay();
+            balance = UIMethods.GetMoneyInput();
             //{ balance; }
             Console.Write("\nInsert coins to play: ");
             balance = int.Parse(Console.ReadLine());
