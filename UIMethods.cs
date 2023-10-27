@@ -166,7 +166,7 @@ namespace Slot_Machine
             return diagMatchTwo;
         }
 
-        public static int PrintSlotMachineNumbers(int[,] slotMachine)
+        public static int[,] PrintSlotMachineNumbers(int[,] slotMachine)
         {
             for (int rowIndex = 0; rowIndex < slotMachine.GetLength(1); rowIndex++)
             {
