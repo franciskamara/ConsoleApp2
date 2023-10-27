@@ -1,67 +1,37 @@
 ﻿using System;
-using System.Reflection.Metadata.Ecma335;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Slot_Machine
 {
-	public static class UIMethods
-	{
-		public static void DisplayWelcomeMessage()
-		{
-            Console.WriteLine("   Slot Machine"); //Intro text
-            Console.WriteLine("*-*-*-*-*-*-*-*-*-*");
+    public class LogicMethods
+    {
+        public static int[,] RandomNumberGen(int width, int length, int topEndNumber)
+        {
+
+            int[,] slotMachine = new int[width, length]; //2D Array with numbers for each slot
+            Random rng = new Random(); //Random generator
+
+            int rowIndex;
+            int colIndex;
+            for (rowIndex = 0; rowIndex < width; rowIndex++) //Generate random numbers for Slot per row
+            {
+                for (colIndex = 0; colIndex < length; colIndex++) //Generate random numbers for Slot per column
+                {
+                    slotMachine[rowIndex, colIndex] = rng.Next(topEndNumber); //Random generator for each slot in machine
+                }
+            }//end Slot loop
+            return slotMachine;
         }
 
-        public static int GetMoneyInput()
-        {
-            Console.Write("\nInsert coins: ");
-            int balance = int.Parse(Console.ReadLine());
-            return balance;
-        }
-
-        public static char UserSelectsGamePlay(char row, char col, char diag)
-        {
-            Console.Clear();
-     
-            Console.WriteLine($"Choose your game!" +
-                $"\n- Play for Rows ({row}) " +
-                $"\n- Play for Columns ({col}) " +
-                $"\n- Play for Diagonals ({diag})");
-            Console.WriteLine();
-            char gameTypeSelection = Console.ReadKey().KeyChar;
-            return gameTypeSelection;
-        }
-
-        public static int QuestionForRowAndColumnsPlay()
-        {
-            Console.WriteLine("\nSelect how many lines you wish to play? 1, 2, or 3");
-            int lineNumberSelection = int.Parse(Console.ReadLine());
-            return lineNumberSelection;
-        }
-
-        public static int QuestionForDiagonalPlays()
-        {
-            Console.WriteLine("\nSelect how many lines you wish to play? 1 or 2");
-            int lineNumberSelection = int.Parse(Console.ReadLine());
-            return lineNumberSelection;
-        }
-
-        public static int WhenBalanceIsLessThanUserInput(int balance)
-        {
-            Console.Clear();
-            Console.WriteLine($"Your current balance: {balance}");
-            Console.Write("\nNot enough money to play chosen amount of lines.\nEnter another number of lines to play: ");
-            int lineNumberSelection = int.Parse(Console.ReadLine());
-            return lineNumberSelection;
-        }
         /// <summary>
-        /// returns the number of winning rows
+        /// Returns the number of winning rows
         /// </summary>
         /// <param name="lineNumberSelection">how many lines to check</param>
         /// <param name="slotMachine"the grid</param>
         /// <returns>number of matched rows</returns>
         public static int GetRowMatch(int lineNumberSelection, int[,] slotMachine)
         {
-                int rowMatch=0;
+            int rowMatch = 0;
             for (int rowIndex = 0; rowIndex < lineNumberSelection; rowIndex++) //Row match
             {
                 int rowCounter = 0;
@@ -79,8 +49,9 @@ namespace Slot_Machine
             }//end Row for loop
             return rowMatch;
         }
+
         /// <summary>
-        /// returns the number of winning columns
+        /// Returns the number of winning columns
         /// </summary>
         /// <param name="lineNumberSelection">how many lines to check</param>
         /// <param name="slotMachine">the grid</param>
@@ -105,8 +76,9 @@ namespace Slot_Machine
             }//end Column for loop
             return colMatch;
         }
+
         /// <summary>
-        /// Returns the number of winning diagonals
+        /// Returns winning diagonal, if start is Top left
         /// </summary>
         /// <param name="lineNumberSelection">how many lines to check</param>
         /// <param name="slotMachine">the grid</param>
@@ -123,13 +95,18 @@ namespace Slot_Machine
                 }
             } //end Diagonal Top left match
 
-            if (diagCounter == slotMachine.GetLength(1) -1)
+            if (diagCounter == slotMachine.GetLength(1) - 1)
             {
                 diagMatch = diagMatch + 1;
             }//end Diagonal for loop
             return diagMatch;
         }
-
+        /// <summary>
+        /// Returns winning diagonal, if start is Top right
+        /// </summary>
+        /// <param name="lineNumberSelection">how many lines to check</param>
+        /// <param name="slotMachine">the grid</param>
+        /// <returns>number of matched diagonals</returns>
         public static int GetDiagonalMatchTopRight(int lineNumberSelection, int[,] slotMachine)
         {
             int diag2Counter = 0; //Diagonal match - top Right
@@ -149,6 +126,10 @@ namespace Slot_Machine
             return diagMatchTwo;
         }
 
+        /// <summary>
+        /// Print Slot Machine numbers
+        /// </summary>
+        /// <param name="slotMachine">the grid</param>
         public static void PrintSlotMachineNumbers(int[,] slotMachine)
         {
             for (int rowIndex = 0; rowIndex < slotMachine.GetLength(1); rowIndex++)
@@ -161,23 +142,7 @@ namespace Slot_Machine
             }//end Print Slot numbers for statement
         }
 
-        public static char AskUserToSpinAgain()
-        {
-            Console.WriteLine("Spin again? y / n");//User selects to spin again or not
-            char spinAgain = Console.ReadKey().KeyChar;
-            Console.Clear();
 
-            return spinAgain;
-        }
-
-        public static void WhereBalanceIsEqualToOrLessThanZero(int balance)
-        {
-            if (balance <= 0)//When the balance is 0 or less
-            {
-                Console.WriteLine("You ran out of money.");
-                Console.WriteLine($"Insert more money to play again? y / n");
-            }
-        }
     }
 }
 

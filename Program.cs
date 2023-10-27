@@ -27,7 +27,6 @@ class Program
 
             balance = UIMethods.GetMoneyInput();//
 
-            int[,] slotMachine = UIMethods.RandomNumberGen(COL_NUMBER, ROW_NUMBER, RDM_NUMBER_TOP_END);
 
             char gameTypeSelection = ' ';
             while (gameTypeSelection != USER_SELECTION_ROWS
@@ -40,7 +39,9 @@ class Program
 
             while (balance > 0)
             {
-                slotMachine = UIMethods.RandomNumberGen(COL_NUMBER, ROW_NUMBER, RDM_NUMBER_TOP_END);
+                int[,] slotMachine = LogicMethods.RandomNumberGen(COL_NUMBER, ROW_NUMBER, RDM_NUMBER_TOP_END);
+                //slotMachine = UIMethods.RandomNumberGen(COL_NUMBER, ROW_NUMBER, RDM_NUMBER_TOP_END);
+
                 /*
                        For future reference
                 int[,] slotMachine = { { 1, 2, 1 }, { 4, 0, 6 }, { 1, 8, 1 } };
@@ -191,15 +192,15 @@ class Program
                 } //end Diagonal if statement 
 
                 //Print Slot numbers
-                //int printSlotMachineNumbers = UIMethods.PrintSlotMachineNumbers(slotMachine);
-                for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++)
-                {
-                    for (colIndex = 0; colIndex < COL_NUMBER; colIndex++)
-                    {
-                        Console.Write(slotMachine[rowIndex, colIndex] + "\t"); //Print random numbers for slot
-                    }
-                    Console.WriteLine();
-                }//end Print Slot numbers for statement
+                UIMethods.PrintSlotMachineNumbers(slotMachine);
+                //for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++)
+                //{
+                //    for (colIndex = 0; colIndex < COL_NUMBER; colIndex++)
+                //    {
+                //        Console.Write(slotMachine[rowIndex, colIndex] + "\t"); //Print random numbers for slot
+                //    }
+                //    Console.WriteLine();
+                //}//end Print Slot numbers for statement
 
                 Console.WriteLine($"Your balance is now: {balance}\n");
 
