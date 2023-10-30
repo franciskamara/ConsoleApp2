@@ -5,7 +5,7 @@ namespace Slot_Machine
 {
     public class LogicMethods
     {
-        public static int[,] RandomNumberGen(int width, int length, int topEndNumber)
+        public static int[,] SetSlotMachineRandomValues(int width, int length, int topEndNumber)
         {
 
             int[,] slotMachine = new int[width, length]; //2D Array with numbers for each slot

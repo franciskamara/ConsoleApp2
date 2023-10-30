@@ -35,11 +35,11 @@ class Program
             {
                 gameTypeSelection = UIMethods.UserSelectsGamePlay(USER_SELECTION_ROWS, USER_SELECTION_COLUMNS, USER_SELECTION_DIAGONALS);
             }
-            Console.Clear();
+            UIMethods.ClearUserOutput();
 
             while (balance > 0)
             {
-                int[,] slotMachine = LogicMethods.RandomNumberGen(COL_NUMBER, ROW_NUMBER, RDM_NUMBER_TOP_END);
+                int[,] slotMachine = LogicMethods.SetSlotMachineRandomValues(COL_NUMBER, ROW_NUMBER, RDM_NUMBER_TOP_END);
                 //slotMachine = UIMethods.RandomNumberGen(COL_NUMBER, ROW_NUMBER, RDM_NUMBER_TOP_END);
 
                 /*
@@ -73,24 +73,11 @@ class Program
                     {
                         while (balance < lineNumberSelection)
                         {
-                            int userInput = UIMethods.WhenBalanceIsLessThanUserInput(balance);//Method (Bal is displayed, Ask for another input, User input)
+                            int userInput = UIMethods.RequestLineNumberReEntry(balance);//Method (Bal is displayed, Ask for another input, User input)
                         }
                     }
                     balance = balance - lineNumberSelection;
-                    Console.Clear();
-
-                    /* 
-                     for (rowIndex = 0; rowIndex < lineNumberSelection; rowIndex++) //Row match
-                     {
-                         int rowCounter = 0;
-                         for (colIndex = 0; colIndex < COL_NUMBER - 1; colIndex++)
-                         {
-                             if (slotMachine[rowIndex, colIndex] == slotMachine[rowIndex, colIndex + 1])
-                             {
-                                 rowCounter += 1; //counter of matches increases
-                             }
-                         }
-                    */
+                    UIMethods.ClearUserOutput();
 
                     int rowMatch = LogicMethods.GetRowMatch(lineNumberSelection, slotMachine);
                     if (rowMatch > 0) //Counting matching pair values
@@ -112,24 +99,11 @@ class Program
                     {
                         while (balance < lineNumberSelection)
                         {
-                            int userInput = UIMethods.WhenBalanceIsLessThanUserInput(balance);
+                            int userInput = UIMethods.RequestLineNumberReEntry(balance);
                         }
                     }
                     balance = balance - lineNumberSelection;
-                    Console.Clear();
-
-                    /*
-                     for (colIndex = 0; colIndex < lineNumberSelection; colIndex++) //Column match
-                    {
-                        int colCounter = 0;
-                        for (rowIndex = 0; rowIndex < ROW_NUMBER - 1; rowIndex++)
-                        {
-                            if (slotMachine[rowIndex, colIndex] == slotMachine[rowIndex + 1, colIndex])
-                            {
-                                colCounter += 1; //counter of matches increases
-                            }
-                        }
-                    */
+                    UIMethods.ClearUserOutput();
 
                     int colMatch = LogicMethods.GetColumnMatch(lineNumberSelection, slotMachine);
                     if (colMatch > 0) //Counting matching pair values - every time there is a Column match
@@ -152,20 +126,12 @@ class Program
                     {
                         while (balance < lineNumberSelection)
                         {
-                            int userInput = UIMethods.WhenBalanceIsLessThanUserInput(balance);
+                            int userInput = UIMethods.RequestLineNumberReEntry(balance);
                         }
                     }
                     balance = balance - lineNumberSelection;
-                    Console.Clear();
+                    UIMethods.ClearUserOutput();
 
-                    //int diagCounter = 0; //Diagonal match - top Left
-                    //for (int index = 0; index < lineNumberSelection - 1; index++)
-                    //{
-                    //    if (slotMachine[index, index] == slotMachine[index + 1, index + 1])
-                    //    {
-                    //        diagCounter += 1;
-
-                    //    }
                     //} //end Diagonal Top left match
                     int diagMatch = LogicMethods.GetDiagonalMatchTopLeft(lineNumberSelection, slotMachine);
                     if (diagMatch > 0)
@@ -174,15 +140,6 @@ class Program
                         balance = balance + WIN_AMOUNT * diagMatch;
                     }//end Diagonal match
 
-                    //int diag2Counter = 0; //Diagonal match - top Right
-                    //for (rowIndex = 0; rowIndex < ROW_NUMBER - 1; rowIndex++)
-                    //{
-                    //    int colSpecial = (COL_NUMBER - 1) - rowIndex;
-                    //    if (slotMachine[rowIndex, colSpecial] == slotMachine[rowIndex + 1, colSpecial - 1])
-                    //    {
-                    //        diag2Counter += 1;
-                    //    }
-                    //}
                     int diagMatchTwo = LogicMethods.GetDiagonalMatchTopRight(lineNumberSelection, slotMachine);
                     if (diagMatchTwo > 0)
                     {
@@ -193,21 +150,11 @@ class Program
 
                 //Print Slot numbers
                 LogicMethods.PrintSlotMachineNumbers(slotMachine);
-                //for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++)
-                //{
-                //    for (colIndex = 0; colIndex < COL_NUMBER; colIndex++)
-                //    {
-                //        Console.Write(slotMachine[rowIndex, colIndex] + "\t"); //Print random numbers for slot
-                //    }
-                //    Console.WriteLine();
-                //}//end Print Slot numbers for statement
 
                 Console.WriteLine($"Your balance is now: {balance}\n");
 
                 char spinAgain = UIMethods.AskUserToSpinAgain();
-                //Console.WriteLine("Spin again? y / n");//User selects to spin again or not
-                //char spinAgain = Console.ReadKey().KeyChar;
-                //Console.Clear();
+
                 if (spinAgain != 'y')
                 {
                     Console.WriteLine($"Balance returned: {balance}");
@@ -216,6 +163,7 @@ class Program
                 }
             }//end (balance>0) While Loop
 
+            string messageToInsertMoreMoney = UIMethods.MessageToInsertMoreMoney(balance);
             if (balance <= 0)//when the balance is 0 or less
             {
                 Console.WriteLine("You ran out of money.");
@@ -223,7 +171,7 @@ class Program
             }
 
             char restartGame = Console.ReadKey().KeyChar; //Option to restart the game by pressing 'y'; if not then end the game
-            Console.Clear();
+            UIMethods.ClearUserOutput();
             if (restartGame != 'y')
             {
                 Console.WriteLine("Thanks for playing!");

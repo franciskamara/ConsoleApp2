@@ -93,10 +93,22 @@ namespace Slot_Machine
         /// Prompt to user if they want to carry on playing
         /// </summary>
         /// <returns>Returns user input for game play, char</returns>
-        public static char AskUserToSpinAgain()
+        public static char AskUserToSpinAgain(int balance)
         {
+            bool spinAgain;
+
             Console.WriteLine("Spin again? y / n");//User selects to spin again or not
-            char spinAgain = Console.ReadKey().KeyChar;
+            spinAgain = Console.ReadKey().KeyChar;
+
+            if (spinAgain == 'y')
+            {
+            }
+            else
+            {
+                Console.WriteLine($"Balance returned: {balance}");
+                Console.WriteLine("\nThanks for playing");
+
+            }
             Console.Clear();
 
             return spinAgain;
