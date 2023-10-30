@@ -11,6 +11,10 @@ namespace Slot_Machine
             Console.WriteLine("*-*-*-*-*-*-*-*-*-*");
         }
 
+        /// <summary>
+        /// Ask user to input money in order to play
+        /// </summary>
+        /// <returns>User value input</returns>
         public static int GetMoneyInput()
         {
             Console.Write("\nInsert coins: ");
@@ -18,6 +22,13 @@ namespace Slot_Machine
             return balance;
         }
 
+        /// <summary>
+        /// Ask user to select which lines they want to play
+        /// </summary>
+        /// <param name="row">stands for 'r' selection</param>
+        /// <param name="col">stands for 'c' selection</param>
+        /// <param name="diag">stands for 'd' selection</param>
+        /// <returns></returns>
         public static char UserSelectsGamePlay(char row, char col, char diag)
         {
             Console.Clear();
@@ -31,6 +42,10 @@ namespace Slot_Machine
             return gameTypeSelection;
         }
 
+        /// <summary>
+        /// Ask user how many lines they wish to play, for Rows and Columns
+        /// </summary>
+        /// <returns>Number entered by user</returns>
         public static int QuestionForRowAndColumnsPlay()
         {
             Console.WriteLine("\nSelect how many lines you wish to play? 1, 2, or 3");
@@ -38,6 +53,10 @@ namespace Slot_Machine
             return lineNumberSelection;
         }
 
+        /// <summary>
+        /// Ask user how manu lines they wish to play, for Diagonals only
+        /// </summary>
+        /// <returns></returns>
         public static int QuestionForDiagonalPlays()
         {
             Console.WriteLine("\nSelect how many lines you wish to play? 1 or 2");
@@ -45,6 +64,11 @@ namespace Slot_Machine
             return lineNumberSelection;
         }
 
+        /// <summary>
+        /// Notify user of current balance, Asks user to make another input based on current balance 
+        /// </summary>
+        /// <param name="balance">User money balance</param>
+        /// <returns></returns>
         public static int WhenBalanceIsLessThanUserInput(int balance)
         {
             Console.Clear();
@@ -53,114 +77,11 @@ namespace Slot_Machine
             int lineNumberSelection = int.Parse(Console.ReadLine());
             return lineNumberSelection;
         }
+
         /// <summary>
-        /// returns the number of winning rows
+        /// Prompt to user if they want to carry on playing
         /// </summary>
-        /// <param name="lineNumberSelection">how many lines to check</param>
-        /// <param name="slotMachine"the grid</param>
-        /// <returns>number of matched rows</returns>
-        public static int GetRowMatch(int lineNumberSelection, int[,] slotMachine)
-        {
-                int rowMatch=0;
-            for (int rowIndex = 0; rowIndex < lineNumberSelection; rowIndex++) //Row match
-            {
-                int rowCounter = 0;
-                for (int colIndex = 0; colIndex < slotMachine.GetLength(0) - 1; colIndex++)
-                {
-                    if (slotMachine[rowIndex, colIndex] == slotMachine[rowIndex, colIndex + 1])
-                    {
-                        rowCounter += 1; //counter of matches increases
-                    }
-                }
-                if (rowCounter == slotMachine.GetLength(0) - 1) //Counting matching pair values
-                {
-                    rowMatch = rowMatch + 1;
-                }
-            }//end Row for loop
-            return rowMatch;
-        }
-        /// <summary>
-        /// returns the number of winning columns
-        /// </summary>
-        /// <param name="lineNumberSelection">how many lines to check</param>
-        /// <param name="slotMachine">the grid</param>
-        /// <returns>number of matched columns</returns>
-        public static int GetColumnMatch(int lineNumberSelection, int[,] slotMachine)
-        {
-            int colMatch = 0;
-            for (int colIndex = 0; colIndex < lineNumberSelection; colIndex++) //Column match
-            {
-                int colCounter = 0;
-                for (int rowIndex = 0; rowIndex < slotMachine.GetLength(1) - 1; rowIndex++)
-                {
-                    if (slotMachine[rowIndex, colIndex] == slotMachine[rowIndex + 1, colIndex])
-                    {
-                        colCounter += 1; //counter of matches increases
-                    }
-                }
-                if (colCounter == slotMachine.GetLength(1) - 1) //Counting matching pair values 
-                {
-                    colMatch = colMatch + 1;
-                }
-            }//end Column for loop
-            return colMatch;
-        }
-        /// <summary>
-        /// Returns the number of winning diagonals
-        /// </summary>
-        /// <param name="lineNumberSelection">how many lines to check</param>
-        /// <param name="slotMachine">the grid</param>
-        /// <returns>number of matched diagonals</returns>
-        public static int GetDiagonalMatchTopLeft(int lineNumberSelection, int[,] slotMachine)
-        {
-            int diagCounter = 0; //Diagonal match - top Left
-            int diagMatch = 0;
-            for (int index = 0; index < lineNumberSelection - 1; index++)
-            {
-                if (slotMachine[index, index] == slotMachine[index + 1, index + 1])
-                {
-                    diagCounter += 1;
-                }
-            } //end Diagonal Top left match
-
-            if (diagCounter == slotMachine.GetLength(1) -1)
-            {
-                diagMatch = diagMatch + 1;
-            }//end Diagonal for loop
-            return diagMatch;
-        }
-
-        public static int GetDiagonalMatchTopRight(int lineNumberSelection, int[,] slotMachine)
-        {
-            int diag2Counter = 0; //Diagonal match - top Right
-            int diagMatchTwo = 0;
-            for (int rowIndex = 0; rowIndex < slotMachine.GetLength(1) - 1; rowIndex++)
-            {
-                int colSpecial = (slotMachine.GetLength(0) - 1) - rowIndex;
-                if (slotMachine[rowIndex, colSpecial] == slotMachine[rowIndex + 1, colSpecial - 1])
-                {
-                    diag2Counter += 1;
-                }
-            }
-            if (diag2Counter == slotMachine.GetLength(1) - 1)
-            {
-                diagMatchTwo = diagMatchTwo + 1;
-            }
-            return diagMatchTwo;
-        }
-
-        public static void PrintSlotMachineNumbers(int[,] slotMachine)
-        {
-            for (int rowIndex = 0; rowIndex < slotMachine.GetLength(1); rowIndex++)
-            {
-                for (int colIndex = 0; colIndex < slotMachine.GetLength(0); colIndex++)
-                {
-                    Console.Write(slotMachine[rowIndex, colIndex] + "\t"); //Print random numbers for slot
-                }
-                Console.WriteLine();
-            }//end Print Slot numbers for statement
-        }
-
+        /// <returns>Returns user input for game play, char</returns>
         public static char AskUserToSpinAgain()
         {
             Console.WriteLine("Spin again? y / n");//User selects to spin again or not
@@ -170,6 +91,10 @@ namespace Slot_Machine
             return spinAgain;
         }
 
+        /// <summary>
+        /// Notify user when balance is 0, Ask user if they want to input more money to continues playing
+        /// </summary>
+        /// <param name="balance"></param>
         public static void WhereBalanceIsEqualToOrLessThanZero(int balance)
         {
             if (balance <= 0)//When the balance is 0 or less

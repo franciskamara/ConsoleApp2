@@ -92,7 +92,7 @@ class Program
                          }
                     */
 
-                    int rowMatch = UIMethods.GetRowMatch(lineNumberSelection, slotMachine);
+                    int rowMatch = LogicMethods.GetRowMatch(lineNumberSelection, slotMachine);
                     if (rowMatch > 0) //Counting matching pair values
                     {
                         Console.WriteLine("Row match");
@@ -131,7 +131,7 @@ class Program
                         }
                     */
 
-                    int colMatch = UIMethods.GetColumnMatch(lineNumberSelection, slotMachine);
+                    int colMatch = LogicMethods.GetColumnMatch(lineNumberSelection, slotMachine);
                     if (colMatch > 0) //Counting matching pair values - every time there is a Column match
                     {
                         Console.WriteLine("Column match");
@@ -167,7 +167,7 @@ class Program
 
                     //    }
                     //} //end Diagonal Top left match
-                    int diagMatch = UIMethods.GetDiagonalMatchTopLeft(lineNumberSelection, slotMachine);
+                    int diagMatch = LogicMethods.GetDiagonalMatchTopLeft(lineNumberSelection, slotMachine);
                     if (diagMatch > 0)
                     {
                         Console.WriteLine("Diagonal match");
@@ -183,7 +183,7 @@ class Program
                     //        diag2Counter += 1;
                     //    }
                     //}
-                    int diagMatchTwo = UIMethods.GetDiagonalMatchTopRight(lineNumberSelection, slotMachine);
+                    int diagMatchTwo = LogicMethods.GetDiagonalMatchTopRight(lineNumberSelection, slotMachine);
                     if (diagMatchTwo > 0)
                     {
                         Console.WriteLine("Diagonal match 2");
@@ -192,7 +192,7 @@ class Program
                 } //end Diagonal if statement 
 
                 //Print Slot numbers
-                UIMethods.PrintSlotMachineNumbers(slotMachine);
+                LogicMethods.PrintSlotMachineNumbers(slotMachine);
                 //for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++)
                 //{
                 //    for (colIndex = 0; colIndex < COL_NUMBER; colIndex++)
