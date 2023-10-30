@@ -69,7 +69,7 @@ namespace Slot_Machine
         /// </summary>
         /// <param name="balance">User money balance</param>
         /// <returns></returns>
-        public static int WhenBalanceIsLessThanUserInput(int balance)
+        public static int RequestLineNumberReEntry(int balance)
         {
             Console.Clear();
             Console.WriteLine($"Your current balance: {balance}");
@@ -77,6 +77,17 @@ namespace Slot_Machine
             int lineNumberSelection = int.Parse(Console.ReadLine());
             return lineNumberSelection;
         }
+
+        //public static int GetLineNumber(int balance, int lineNumberSelection)
+        //{
+        //    while (balance > 0)
+        //    {
+        //        if (lineNumberSelection < balance && lineNumberSelection  )
+        //        {
+                    
+        //        }
+        //    }
+        //}
 
         /// <summary>
         /// Prompt to user if they want to carry on playing
