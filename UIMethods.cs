@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection.Metadata.Ecma335;
+using SlotMachine;
 
 namespace Slot_Machine
 {
@@ -43,73 +44,56 @@ namespace Slot_Machine
         }
 
         /// <summary>
-        /// Ask user how many lines they wish to play, for Rows and Columns
+        /// Ask user how many lines they want to play
         /// </summary>
-        /// <returns>Number entered by user</returns>
-        public static int QuestionForRowAndColumnsPlay()
+        /// <param name="balance">User's money balance</param>
+        /// <param name="gameTypeSelection">Game selected by user</param>
+        /// <returns>Number of lines user wants to play</returns>
+        public static int GetLineNumber(int balance, char gameTypeSelection)
         {
-            Console.WriteLine("\nSelect how many lines you wish to play? 1, 2, or 3");
-            int lineNumberSelection = int.Parse(Console.ReadLine());
-            return lineNumberSelection;
+            int maxLineNumber = 3;
+            int lineNumberSelection = 0;
+            if (gameTypeSelection == Program.USER_SELECTION_DIAGONALS)
+            {
+                maxLineNumber = 2;
+
+            }
+            while (balance > 0)
+            {
+                Console.WriteLine($"\nSelect how many lines you wish to play? Between 1 and {maxLineNumber}");
+                lineNumberSelection = int.Parse(Console.ReadLine());
+                if (lineNumberSelection < balance && lineNumberSelection <= maxLineNumber)
+                {
+                    break;
+
+                }
+                Console.Write("Input invalid. Try another input: ");
+            }
+                return lineNumberSelection;
         }
 
         /// <summary>
-        /// Ask user how manu lines they wish to play, for Diagonals only
+        /// Question user if they want to carry on playing or not
         /// </summary>
-        /// <returns></returns>
-        public static int QuestionForDiagonalPlays()
+        /// <returns>User char input for game play</returns>
+        public static bool AskUserToSpinAgain(int balance)
         {
-            Console.WriteLine("\nSelect how many lines you wish to play? 1 or 2");
-            int lineNumberSelection = int.Parse(Console.ReadLine());
-            return lineNumberSelection;
-        }
-
-        /// <summary>
-        /// Notify user of current balance, Asks user to make another input based on current balance 
-        /// </summary>
-        /// <param name="balance">User money balance</param>
-        /// <returns></returns>
-        public static int RequestLineNumberReEntry(int balance)
-        {
-            Console.Clear();
-            Console.WriteLine($"Your current balance: {balance}");
-            Console.Write("\nNot enough money to play chosen amount of lines.\nEnter another number of lines to play: ");
-            int lineNumberSelection = int.Parse(Console.ReadLine());
-            return lineNumberSelection;
-        }
-
-        //public static int GetLineNumber(int balance, int lineNumberSelection)
-        //{
-        //    while (balance > 0)
-        //    {
-        //        if (lineNumberSelection < balance && lineNumberSelection  )
-        //        {
-                    
-        //        }
-        //    }
-        //}
-
-        /// <summary>
-        /// Prompt to user if they want to carry on playing
-        /// </summary>
-        /// <returns>Returns user input for game play, char</returns>
-        public static char AskUserToSpinAgain(int balance)
-        {
-            bool spinAgain;
+            bool spinAgain = false;
 
             Console.WriteLine("Spin again? y / n");//User selects to spin again or not
-            spinAgain = Console.ReadKey().KeyChar;
+            char input = Console.ReadKey().KeyChar;
 
-            if (spinAgain == 'y')
+            if (input == 'y')
             {
+                spinAgain = true;
             }
             else
             {
+                Console.Clear();
                 Console.WriteLine($"Balance returned: {balance}");
                 Console.WriteLine("\nThanks for playing");
 
             }
-            Console.Clear();
 
             return spinAgain;
         }
@@ -118,13 +102,66 @@ namespace Slot_Machine
         /// Notify user when balance is 0, Ask user if they want to input more money to continues playing
         /// </summary>
         /// <param name="balance"></param>
-        public static void WhereBalanceIsEqualToOrLessThanZero(int balance)
+        public static void WhereBalanceIsZeroAndAskUserIfTheyWantToPlayAgain(int balance)
         {
             if (balance <= 0)//When the balance is 0 or less
             {
                 Console.WriteLine("You ran out of money.");
                 Console.WriteLine($"Insert more money to play again? y / n");
             }
+        }
+
+        /// <summary>
+        /// Clear console
+        /// </summary>
+        public static void ClearUserOutput()
+        {
+            Console.Clear();
+        }
+
+        /// <summary>
+        /// Row Win message
+        /// </summary>
+        public static void RowWinMessage()
+        {
+            Console.WriteLine("Row match");
+        }
+        /// <summary>
+        /// Column Win message
+        /// </summary>
+        public static void ColumnWinMessage()
+        {
+            Console.WriteLine("Column match");
+        }
+        /// <summary>
+        /// Diagonal One Win message
+        /// </summary>
+        public static void Diagonal1WinMessage()
+        {
+            Console.WriteLine("Diagonal match");
+        }
+        /// <summary>
+        /// Diagonal 2 Win message
+        /// </summary>
+        public static void Diagonal2WinMessage()
+        {
+            Console.WriteLine("Diagonal match 2");
+        }
+
+        /// <summary>
+        /// Notify balance to user
+        /// </summary>
+        /// <param name="balance"> User's balance</param>
+        public static void BalanceNotification(int balance)
+        {
+            Console.WriteLine($"Your balance is now: {balance}\n");
+        }
+        /// <summary>
+        /// Thanks for playing message
+        /// </summary>
+        public static void ThanksForPlayingMessage()
+        {
+            Console.WriteLine("Thanks for playing!");
         }
     }
 }

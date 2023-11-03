@@ -12,9 +12,9 @@ class Program
     const int WIN_AMOUNT = 10;
 
     // User game selection constants
-    const char USER_SELECTION_ROWS = 'r';
-    const char USER_SELECTION_COLUMNS = 'c';
-    const char USER_SELECTION_DIAGONALS = 'd';
+    public const char USER_SELECTION_ROWS = 'r';
+    public const char USER_SELECTION_COLUMNS = 'c';
+    public const char USER_SELECTION_DIAGONALS = 'd';
 
     static void Main(string[] args)
     {
@@ -60,22 +60,11 @@ class Program
                     }
                 }//end Slot loop
                 */
-
+                int lineNumberSelection = UIMethods.GetLineNumber(balance, gameTypeSelection);
                 //Winning Scenario: Row
                 if (gameTypeSelection == USER_SELECTION_ROWS)
                 {
-                    int lineNumberSelection = UIMethods.QuestionForRowAndColumnsPlay();
-
-                    if (balance >= lineNumberSelection) //Reduce money by how many lines to play
-                    {
-                    }
-                    else //Where line selection is more than the available balance
-                    {
-                        while (balance < lineNumberSelection)
-                        {
-                            int userInput = UIMethods.RequestLineNumberReEntry(balance);//Method (Bal is displayed, Ask for another input, User input)
-                        }
-                    }
+                    
                     balance = balance - lineNumberSelection;
                     UIMethods.ClearUserOutput();
 
@@ -90,18 +79,7 @@ class Program
                 // Winning Scenario: Column
                 if (gameTypeSelection == USER_SELECTION_COLUMNS)
                 {
-                    int lineNumberSelection = UIMethods.QuestionForRowAndColumnsPlay();
-
-                    if (balance >= lineNumberSelection) //Reduce money by how many lines to play
-                    {
-                    }
-                    else //Where line selection is more than the available balance
-                    {
-                        while (balance < lineNumberSelection)
-                        {
-                            int userInput = UIMethods.RequestLineNumberReEntry(balance);
-                        }
-                    }
+                    
                     balance = balance - lineNumberSelection;
                     UIMethods.ClearUserOutput();
 
@@ -117,18 +95,7 @@ class Program
                 // Winning Scenario: Diagonal
                 if (gameTypeSelection == USER_SELECTION_DIAGONALS)
                 {
-                    int lineNumberSelection = UIMethods.QuestionForDiagonalPlays();
-
-                    if (balance >= lineNumberSelection) //Reduce money by how many lines to play
-                    {
-                    }
-                    else //Where line selection is more than the available balance
-                    {
-                        while (balance < lineNumberSelection)
-                        {
-                            int userInput = UIMethods.RequestLineNumberReEntry(balance);
-                        }
-                    }
+                    
                     balance = balance - lineNumberSelection;
                     UIMethods.ClearUserOutput();
 
@@ -153,22 +120,25 @@ class Program
 
                 Console.WriteLine($"Your balance is now: {balance}\n");
 
-                char spinAgain = UIMethods.AskUserToSpinAgain();
-
-                if (spinAgain != 'y')
+                if (!UIMethods.AskUserToSpinAgain(balance))
                 {
-                    Console.WriteLine($"Balance returned: {balance}");
-                    Console.WriteLine("\nThanks for playing");
+
                     return;
                 }
+                //if (spinAgain != 'y')
+                //{
+                //    Console.WriteLine($"Balance returned: {balance}");
+                //    Console.WriteLine("\nThanks for playing");
+                //    return;
+                //}
             }//end (balance>0) While Loop
 
-            string messageToInsertMoreMoney = UIMethods.MessageToInsertMoreMoney(balance);
-            if (balance <= 0)//when the balance is 0 or less
-            {
-                Console.WriteLine("You ran out of money.");
-                Console.WriteLine($"Insert more money to play again? y / n");
-            }
+            UIMethods.WhereBalanceIsZeroAndAskUserToPlayAgain(balance);
+            //if (balance <= 0)//when the balance is 0 or less
+            //{
+            //    Console.WriteLine("You ran out of money.");
+            //    Console.WriteLine($"Insert more money to play again? y / n");
+            //}
 
             char restartGame = Console.ReadKey().KeyChar; //Option to restart the game by pressing 'y'; if not then end the game
             UIMethods.ClearUserOutput();
