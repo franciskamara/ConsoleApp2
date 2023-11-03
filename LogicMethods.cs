@@ -5,6 +5,13 @@ namespace Slot_Machine
 {
     public class LogicMethods
     {
+        /// <summary>
+        /// Set SLot Machine random values
+        /// </summary>
+        /// <param name="width">grid width</param>
+        /// <param name="length">gri length</param>
+        /// <param name="topEndNumber">Top end number of random draw numbers</param>
+        /// <returns></returns>
         public static int[,] SetSlotMachineRandomValues(int width, int length, int topEndNumber)
         {
 
@@ -101,6 +108,7 @@ namespace Slot_Machine
             }//end Diagonal for loop
             return diagMatch;
         }
+
         /// <summary>
         /// Returns winning diagonal, if start is Top right
         /// </summary>
@@ -141,8 +149,6 @@ namespace Slot_Machine
                 Console.WriteLine();
             }//end Print Slot numbers for statement
         }
-
-
     }
 }
 

@@ -40,53 +40,34 @@ class Program
             while (balance > 0)
             {
                 int[,] slotMachine = LogicMethods.SetSlotMachineRandomValues(COL_NUMBER, ROW_NUMBER, RDM_NUMBER_TOP_END);
-                //slotMachine = UIMethods.RandomNumberGen(COL_NUMBER, ROW_NUMBER, RDM_NUMBER_TOP_END);
 
-                /*
-                       For future reference
-                int[,] slotMachine = { { 1, 2, 1 }, { 4, 0, 6 }, { 1, 8, 1 } };
-                slotMachine[0, 0] = 1;
-                slotMachine[0, 1] = 2;
-                slotMachine[0, 2] = 3;
-                
-
-                int rowIndex;
-                int colIndex;
-                for (rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++) //Generate random numbers for Slot per row
-                {
-                    for (colIndex = 0; colIndex < COL_NUMBER; colIndex++) //Generate random numbers for Slot per column
-                    {
-                        slotMachine[rowIndex, colIndex] = rng.Next(RDM_NUMBER_TOP_END); //Random generator for each slot in machine
-                    }
-                }//end Slot loop
-                */
                 int lineNumberSelection = UIMethods.GetLineNumber(balance, gameTypeSelection);
                 //Winning Scenario: Row
                 if (gameTypeSelection == USER_SELECTION_ROWS)
                 {
-                    
+
                     balance = balance - lineNumberSelection;
                     UIMethods.ClearUserOutput();
 
                     int rowMatch = LogicMethods.GetRowMatch(lineNumberSelection, slotMachine);
                     if (rowMatch > 0) //Counting matching pair values
                     {
-                        Console.WriteLine("Row match");
+                        UIMethods.RowWinMessage();
                         balance = balance + WIN_AMOUNT * rowMatch;
                     }
-                }//end Row if statement 
+                }//end Winning Scenario: Row
 
                 // Winning Scenario: Column
                 if (gameTypeSelection == USER_SELECTION_COLUMNS)
                 {
-                    
+
                     balance = balance - lineNumberSelection;
                     UIMethods.ClearUserOutput();
 
                     int colMatch = LogicMethods.GetColumnMatch(lineNumberSelection, slotMachine);
                     if (colMatch > 0) //Counting matching pair values - every time there is a Column match
                     {
-                        Console.WriteLine("Column match");
+                        UIMethods.ColumnWinMessage();
                         balance = balance + WIN_AMOUNT * colMatch;
                     }
                 }//end Winning Scenario: Column
@@ -95,7 +76,7 @@ class Program
                 // Winning Scenario: Diagonal
                 if (gameTypeSelection == USER_SELECTION_DIAGONALS)
                 {
-                    
+
                     balance = balance - lineNumberSelection;
                     UIMethods.ClearUserOutput();
 
@@ -103,51 +84,37 @@ class Program
                     int diagMatch = LogicMethods.GetDiagonalMatchTopLeft(lineNumberSelection, slotMachine);
                     if (diagMatch > 0)
                     {
-                        Console.WriteLine("Diagonal match");
+                        UIMethods.Diagonal1WinMessage();
                         balance = balance + WIN_AMOUNT * diagMatch;
                     }//end Diagonal match
 
                     int diagMatchTwo = LogicMethods.GetDiagonalMatchTopRight(lineNumberSelection, slotMachine);
                     if (diagMatchTwo > 0)
                     {
-                        Console.WriteLine("Diagonal match 2");
+                        UIMethods.Diagonal2WinMessage();
                         balance = balance + WIN_AMOUNT * diagMatchTwo;
                     }
-                } //end Diagonal if statement 
+                } //end Winning Scenarios: Diagonal
 
-                //Print Slot numbers
-                LogicMethods.PrintSlotMachineNumbers(slotMachine);
+                LogicMethods.PrintSlotMachineNumbers(slotMachine);//Print Slot numbers
 
-                Console.WriteLine($"Your balance is now: {balance}\n");
+                UIMethods.BalanceNotification(balance);//Notify user of balance
 
-                if (!UIMethods.AskUserToSpinAgain(balance))
+                if (!UIMethods.AskUserToSpinAgain(balance))//Ask user if they wish to spin again 
                 {
 
                     return;
                 }
-                //if (spinAgain != 'y')
-                //{
-                //    Console.WriteLine($"Balance returned: {balance}");
-                //    Console.WriteLine("\nThanks for playing");
-                //    return;
-                //}
-            }//end (balance>0) While Loop
 
-            UIMethods.WhereBalanceIsZeroAndAskUserToPlayAgain(balance);
-            //if (balance <= 0)//when the balance is 0 or less
-            //{
-            //    Console.WriteLine("You ran out of money.");
-            //    Console.WriteLine($"Insert more money to play again? y / n");
-            //}
-
-            char restartGame = Console.ReadKey().KeyChar; //Option to restart the game by pressing 'y'; if not then end the game
-            UIMethods.ClearUserOutput();
-            if (restartGame != 'y')
-            {
-                Console.WriteLine("Thanks for playing!");
-                break;
-            }
+                UIMethods.WhereBalanceIsZeroAndAskUserIfTheyWantToPlayAgain(balance);//User ran out of money and asked if they insert more
+                char restartGame = Console.ReadKey().KeyChar; //Option to restart the game by pressing 'y'; if not then end the game
+                UIMethods.ClearUserOutput();
+                if (restartGame != 'y')
+                {
+                    UIMethods.ThanksForPlayingMessage();
+                    break;
+                }
+            }//end While loop where (balance > 0)
         }//end startGame While loop
     }//end Main args
-
 }//end class Program
