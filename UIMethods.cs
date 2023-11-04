@@ -67,7 +67,7 @@ namespace Slot_Machine
                     break;
 
                 }
-                Console.Write("Input invalid. Try another input: ");
+                Console.Write("Input invalid. Try another input.");
             }
                 return lineNumberSelection;
         }
