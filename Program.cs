@@ -96,7 +96,7 @@ class Program
                     }
                 } //end Winning Scenarios: Diagonal
 
-                LogicMethods.PrintSlotMachineNumbers(slotMachine);//Print Slot numbers
+                UIMethods.PrintSlotMachineNumbers(slotMachine);//Print Slot numbers
 
                 UIMethods.BalanceNotification(balance);//Notify user of balance
 
