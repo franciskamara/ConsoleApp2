@@ -32,8 +32,6 @@ namespace Slot_Machine
         /// <returns></returns>
         public static char UserSelectsGamePlay(char row, char col, char diag)
         {
-            Console.Clear();
-     
             Console.WriteLine($"Choose your game!" +
                 $"\n- Play for Rows ({row}) " +
                 $"\n- Play for Columns ({col}) " +
@@ -70,6 +68,22 @@ namespace Slot_Machine
                 Console.Write("Input invalid. Try another input.");
             }
                 return lineNumberSelection;
+        }
+
+        /// <summary>
+        /// Print Slot Machine numbers
+        /// </summary>
+        /// <param name="slotMachine">the grid</param>
+        public static void PrintSlotMachineNumbers(int[,] slotMachine)
+        {
+            for (int rowIndex = 0; rowIndex < slotMachine.GetLength(1); rowIndex++)
+            {
+                for (int colIndex = 0; colIndex < slotMachine.GetLength(0); colIndex++)
+                {
+                    Console.Write(slotMachine[rowIndex, colIndex] + "\t"); //Print random numbers for slot
+                }
+                Console.WriteLine();
+            }//end Print Slot numbers for statement
         }
 
         /// <summary>
