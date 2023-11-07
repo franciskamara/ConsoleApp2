@@ -18,8 +18,8 @@ class Program
     public const char USER_SELECTION_ROWS = 'r';
     public const char USER_SELECTION_COLUMNS = 'c';
     public const char USER_SELECTION_DIAGONALS = 'd';
-    public const char USER_SELECT_YES = 'y';
-    public const char USER_SELECT_NO = 'n';
+    public const char USER_SELECT_YES = 'y';//User selects Yes
+    public const char USER_SELECT_NO = 'n';//User selects No
 
     static void Main(string[] args)
     {
