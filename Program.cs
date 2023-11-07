@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Quic;
 using Slot_Machine;
 
 namespace SlotMachine; // Note: actual namespace depends on the project name.
@@ -10,11 +11,15 @@ class Program
     const int ROW_NUMBER = 3;
     const int RDM_NUMBER_TOP_END = 11;
     const int WIN_AMOUNT = 10;
+    const int MAX_LINE_WIN_NUMBER_HOR_VER = 3;
+    const int MAX_LINE_WIN_NUMBER_DIAG = 2;
 
     // User game selection constants
     public const char USER_SELECTION_ROWS = 'r';
     public const char USER_SELECTION_COLUMNS = 'c';
     public const char USER_SELECTION_DIAGONALS = 'd';
+    public const char USER_SELECT_YES = 'y';
+    public const char USER_SELECT_NO = 'n';
 
     static void Main(string[] args)
     {
@@ -33,6 +38,7 @@ class Program
                 && gameTypeSelection != USER_SELECTION_COLUMNS
                 && gameTypeSelection != USER_SELECTION_DIAGONALS)
             {
+                UIMethods.ClearUserOutput();
                 gameTypeSelection = UIMethods.UserSelectsGamePlay(USER_SELECTION_ROWS, USER_SELECTION_COLUMNS, USER_SELECTION_DIAGONALS);
             }
             UIMethods.ClearUserOutput();
@@ -41,7 +47,7 @@ class Program
             {
                 int[,] slotMachine = LogicMethods.SetSlotMachineRandomValues(COL_NUMBER, ROW_NUMBER, RDM_NUMBER_TOP_END);
 
-                int lineNumberSelection = UIMethods.GetLineNumber(balance, gameTypeSelection);
+                int lineNumberSelection = UIMethods.GetLineNumber(balance, gameTypeSelection, MAX_LINE_WIN_NUMBER_HOR_VER, MAX_LINE_WIN_NUMBER_DIAG);
                 //Winning Scenario: Row
                 if (gameTypeSelection == USER_SELECTION_ROWS)
                 {
@@ -98,22 +104,39 @@ class Program
 
                 UIMethods.PrintSlotMachineNumbers(slotMachine);//Print Slot numbers
 
-                UIMethods.BalanceNotification(balance);//Notify user of balance
+                UIMethods.OutputRemainingBalance(balance);//Notify user of balance
+
+                if (balance <= 0) //Where balance is 0, Ask user if they want to insert more money
+                {
+                    Console.WriteLine("You ran out of money.");
+                    Console.WriteLine($"Insert more money to play again? {USER_SELECT_YES} / {USER_SELECT_NO}");
+
+                    char input = Console.ReadKey().KeyChar; //Option to restart the game by pressing 'y'; if not then end the game
+                    UIMethods.ClearUserOutput();
+                    if (input == USER_SELECT_YES)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        UIMethods.ClearUserOutput();
+                        UIMethods.OutputEndGameMessage();
+                        return;
+                    }
+                    //if(ask if user wants to input more noey)
+                    //input money routine  money = getmoneyinput()
+                    //continue
+                    //else
+                    //quit game
+                }
 
                 if (!UIMethods.AskUserToSpinAgain(balance))//Ask user if they wish to spin again 
                 {
-
                     return;
                 }
+                else
+                    continue;
 
-                UIMethods.WhereBalanceIsZeroAndAskUserIfTheyWantToPlayAgain(balance);//User ran out of money and asked if they insert more
-                char restartGame = Console.ReadKey().KeyChar; //Option to restart the game by pressing 'y'; if not then end the game
-                UIMethods.ClearUserOutput();
-                if (restartGame != 'y')
-                {
-                    UIMethods.ThanksForPlayingMessage();
-                    break;
-                }
             }//end While loop where (balance > 0)
         }//end startGame While loop
     }//end Main args

@@ -47,13 +47,13 @@ namespace Slot_Machine
         /// <param name="balance">User's money balance</param>
         /// <param name="gameTypeSelection">Game selected by user</param>
         /// <returns>Number of lines user wants to play</returns>
-        public static int GetLineNumber(int balance, char gameTypeSelection)
+        public static int GetLineNumber(int balance, char gameTypeSelection, int MAX_LINE_NUMBER_HOR_VER, int MAX_LINE_NUMBER_DIAG)
         {
-            int maxLineNumber = 3;
+            int maxLineNumber = MAX_LINE_NUMBER_HOR_VER;
             int lineNumberSelection = 0;
             if (gameTypeSelection == Program.USER_SELECTION_DIAGONALS)
             {
-                maxLineNumber = 2;
+                maxLineNumber = MAX_LINE_NUMBER_DIAG;
 
             }
             while (balance > 0)
@@ -94,7 +94,7 @@ namespace Slot_Machine
         {
             bool spinAgain = false;
 
-            Console.WriteLine("Spin again? y / n");//User selects to spin again or not
+            Console.WriteLine($"Spin again? {Program.USER_SELECT_YES} / {Program.USER_SELECT_NO}");//User selects to spin again or not
             char input = Console.ReadKey().KeyChar;
 
             if (input == 'y')
@@ -103,27 +103,14 @@ namespace Slot_Machine
             }
             else
             {
-                Console.Clear();
+                ClearUserOutput();
                 Console.WriteLine($"Balance returned: {balance}");
-                Console.WriteLine("\nThanks for playing");
+                OutputEndGameMessage();
 
             }
-
             return spinAgain;
         }
 
-        /// <summary>
-        /// Notify user when balance is 0, Ask user if they want to input more money to continues playing
-        /// </summary>
-        /// <param name="balance"></param>
-        public static void WhereBalanceIsZeroAndAskUserIfTheyWantToPlayAgain(int balance)
-        {
-            if (balance <= 0)//When the balance is 0 or less
-            {
-                Console.WriteLine("You ran out of money.");
-                Console.WriteLine($"Insert more money to play again? y / n");
-            }
-        }
 
         /// <summary>
         /// Clear console
@@ -166,14 +153,14 @@ namespace Slot_Machine
         /// Notify balance to user
         /// </summary>
         /// <param name="balance"> User's balance</param>
-        public static void BalanceNotification(int balance)
+        public static void OutputRemainingBalance(int balance)
         {
             Console.WriteLine($"Your balance is now: {balance}\n");
         }
         /// <summary>
         /// Thanks for playing message
         /// </summary>
-        public static void ThanksForPlayingMessage()
+        public static void OutputEndGameMessage()
         {
             Console.WriteLine("Thanks for playing!");
         }

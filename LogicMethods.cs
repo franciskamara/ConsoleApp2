@@ -133,22 +133,6 @@ namespace Slot_Machine
             }
             return diagMatchTwo;
         }
-
-        /// <summary>
-        /// Print Slot Machine numbers
-        /// </summary>
-        /// <param name="slotMachine">the grid</param>
-        public static void PrintSlotMachineNumbers(int[,] slotMachine)
-        {
-            for (int rowIndex = 0; rowIndex < slotMachine.GetLength(1); rowIndex++)
-            {
-                for (int colIndex = 0; colIndex < slotMachine.GetLength(0); colIndex++)
-                {
-                    Console.Write(slotMachine[rowIndex, colIndex] + "\t"); //Print random numbers for slot
-                }
-                Console.WriteLine();
-            }//end Print Slot numbers for statement
-        }
     }
 }
 
