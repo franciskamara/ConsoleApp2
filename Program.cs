@@ -106,7 +106,7 @@ class Program
 
                 UIMethods.OutputRemainingBalance(balance);//Notify user of balance
 
-                if (balance <= 0) //Where balance is 0, Ask user if they want to insert more money
+                if (balance <= 0) //Where balance is 0, Ask user if they want to insert more money.
                 {
                     Console.WriteLine("You ran out of money.");
                     Console.WriteLine($"Insert more money to play again? {USER_SELECT_YES} / {USER_SELECT_NO}");
