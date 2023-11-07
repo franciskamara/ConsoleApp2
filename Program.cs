@@ -11,8 +11,8 @@ class Program
     const int ROW_NUMBER = 3;
     const int RDM_NUMBER_TOP_END = 11;
     const int WIN_AMOUNT = 10;
-    const int MAX_LINE_WIN_NUMBER_HOR_VER = 3;
-    const int MAX_LINE_WIN_NUMBER_DIAG = 2;
+    const int MAX_LINE_WIN_NUMBER_HOR_VER = 3; //Max input for Column/Row
+    const int MAX_LINE_WIN_NUMBER_DIAG = 2; //Max input for Diagonal
 
     // User game selection constants
     public const char USER_SELECTION_ROWS = 'r';
