@@ -108,8 +108,7 @@ class Program
 
                 if (balance <= 0) //Where balance is 0, Ask user if they want to insert more money.
                 {
-                    Console.WriteLine("You ran out of money.");
-                    Console.WriteLine($"Insert more money to play again? {USER_SELECT_YES} / {USER_SELECT_NO}");
+                    UIMethods.OutputNoMoneyMessage();
 
                     char input = Console.ReadKey().KeyChar; //Option to restart the game by pressing 'y'; if not then end the game
                     UIMethods.ClearUserOutput();
@@ -123,11 +122,6 @@ class Program
                         UIMethods.OutputEndGameMessage();
                         return;
                     }
-                    //if(ask if user wants to input more noey)
-                    //input money routine  money = getmoneyinput()
-                    //continue
-                    //else
-                    //quit game
                 }
 
                 if (!UIMethods.AskUserToSpinAgain(balance))//Ask user if they wish to spin again 

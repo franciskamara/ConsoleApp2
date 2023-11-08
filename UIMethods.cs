@@ -158,6 +158,15 @@ namespace Slot_Machine
             Console.WriteLine($"Your balance is now: {balance}\n");
         }
         /// <summary>
+        /// Where balance is 0, Notify user and ask if they wish to play again 
+        /// </summary>
+        public static void OutputNoMoneyMessage()
+        {
+            Console.WriteLine("You ran out of money.");
+            Console.WriteLine($"Insert more money to play again? {Program.USER_SELECT_YES} / {Program.USER_SELECT_NO}");
+        }
+
+        /// <summary>
         /// Thanks for playing message
         /// </summary>
         public static void OutputEndGameMessage()
