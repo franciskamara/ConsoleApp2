@@ -1,0 +1,28 @@
+﻿<Properties StartupConfiguration="{FF7749F6-AFF8-4D9A-8EED-F1E89F1C5A2E}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="LogicMethods.cs">
+    <Files>
+      <File FileName="../Christmas_Tree/Christmas_Tree/Program.cs" Line="22" Column="66" />
+      <File FileName="Program.cs" Line="132" Column="29" />
+      <File FileName="LogicMethods.cs" Line="1" Column="1" />
+      <File FileName="UIMethods.cs" Line="57" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Slot_Machine" expanded="True">
+            <Node name="Slot_Machine">
+              <Node name="LogicMethods.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Slot__Machine PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
+</Properties>

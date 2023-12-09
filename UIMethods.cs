@@ -6,7 +6,7 @@ namespace Slot_Machine
 {
 	public static class UIMethods
 	{
-		public static void DisplayWelcomeMessage()
+		public static void PrintWelcomeMessage()
 		{
             Console.WriteLine("   Slot Machine"); //Intro text
             Console.WriteLine("*-*-*-*-*-*-*-*-*-*");
@@ -16,7 +16,7 @@ namespace Slot_Machine
         /// Ask user to input money in order to play
         /// </summary>
         /// <returns>User value input</returns>
-        public static int GetMoneyInput()
+        public static int MoneyInputRequestMessage()
         {
             Console.Write("\nInsert coins: ");
             int balance = int.Parse(Console.ReadLine());
@@ -30,7 +30,7 @@ namespace Slot_Machine
         /// <param name="col">stands for 'c' selection</param>
         /// <param name="diag">stands for 'd' selection</param>
         /// <returns></returns>
-        public static char UserSelectsGamePlay(char row, char col, char diag)
+        public static char PrintGamePlaySelection(char row, char col, char diag)
         {
             Console.WriteLine($"Choose your game!" +
                 $"\n- Play for Rows ({row}) " +
@@ -47,7 +47,7 @@ namespace Slot_Machine
         /// <param name="balance">User's money balance</param>
         /// <param name="gameTypeSelection">Game selected by user</param>
         /// <returns>Number of lines user wants to play</returns>
-        public static int GetLineNumber(int balance, char gameTypeSelection, int MAX_LINE_NUMBER_HOR_VER, int MAX_LINE_NUMBER_DIAG)
+        public static int LineNumberInput(int balance, char gameTypeSelection, int MAX_LINE_NUMBER_HOR_VER, int MAX_LINE_NUMBER_DIAG)
         {
             int maxLineNumber = MAX_LINE_NUMBER_HOR_VER;
             int lineNumberSelection = 0;
@@ -90,7 +90,7 @@ namespace Slot_Machine
         /// Question user if they want to carry on playing or not
         /// </summary>
         /// <returns>User char input for game play</returns>
-        public static bool AskUserToSpinAgain(int balance)
+        public static bool PrintSpinAgainMessage(int balance)
         {
             bool spinAgain = false;
 
@@ -105,7 +105,7 @@ namespace Slot_Machine
             {
                 ClearUserOutput();
                 Console.WriteLine($"Balance returned: {balance}");
-                OutputEndGameMessage();
+                PrintEndGameMessage();
 
             }
             return spinAgain;
@@ -123,28 +123,28 @@ namespace Slot_Machine
         /// <summary>
         /// Row Win message
         /// </summary>
-        public static void RowWinMessage()
+        public static void PrintRowWinMessage()
         {
             Console.WriteLine("Row match");
         }
         /// <summary>
         /// Column Win message
         /// </summary>
-        public static void ColumnWinMessage()
+        public static void PrintColumnWinMessage()
         {
             Console.WriteLine("Column match");
         }
         /// <summary>
         /// Diagonal One Win message
         /// </summary>
-        public static void Diagonal1WinMessage()
+        public static void PrintDiagonal1WinMessage()
         {
             Console.WriteLine("Diagonal match");
         }
         /// <summary>
         /// Diagonal 2 Win message
         /// </summary>
-        public static void Diagonal2WinMessage()
+        public static void PrintDiagonal2WinMessage()
         {
             Console.WriteLine("Diagonal match 2");
         }
@@ -153,14 +153,14 @@ namespace Slot_Machine
         /// Notify balance to user
         /// </summary>
         /// <param name="balance"> User's balance</param>
-        public static void OutputRemainingBalance(int balance)
+        public static void PrintRemainingBalance(int balance)
         {
             Console.WriteLine($"Your balance is now: {balance}\n");
         }
         /// <summary>
         /// Where balance is 0, Notify user and ask if they wish to play again 
         /// </summary>
-        public static void OutputNoMoneyMessage()
+        public static void PrintNoMoneyMessage()
         {
             Console.WriteLine("You ran out of money.");
             Console.WriteLine($"Insert more money to play again? {Program.USER_SELECT_YES} / {Program.USER_SELECT_NO}");
@@ -169,7 +169,7 @@ namespace Slot_Machine
         /// <summary>
         /// Thanks for playing message
         /// </summary>
-        public static void OutputEndGameMessage()
+        public static void PrintEndGameMessage()
         {
             Console.WriteLine("Thanks for playing!");
         }
