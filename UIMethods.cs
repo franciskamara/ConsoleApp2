@@ -32,12 +32,16 @@ namespace Slot_Machine
         /// <returns></returns>
         public static char PrintGamePlaySelection(char row, char col, char diag)
         {
+            Console.Clear();
+
             Console.WriteLine($"Choose your game!" +
                 $"\n- Play for Rows ({row}) " +
                 $"\n- Play for Columns ({col}) " +
                 $"\n- Play for Diagonals ({diag})");
             Console.WriteLine();
             char gameTypeSelection = Console.ReadKey().KeyChar;
+
+            Console.Clear();
             return gameTypeSelection;
         }
 
@@ -58,7 +62,7 @@ namespace Slot_Machine
             }
             while (balance > 0)
             {
-                Console.WriteLine($"\nSelect how many lines you wish to play? Between 1 and {maxLineNumber}");
+                Console.WriteLine($"\nSelect how many lines you wish to play?\nBetween 1 and {maxLineNumber}");
                 lineNumberSelection = int.Parse(Console.ReadLine());
                 if (lineNumberSelection <= balance && lineNumberSelection <= maxLineNumber)
                 {
@@ -76,6 +80,8 @@ namespace Slot_Machine
         /// <param name="slotMachine">the grid</param>
         public static void PrintSlotMachineNumbers(int[,] slotMachine)
         {
+            Console.Clear();
+
             for (int rowIndex = 0; rowIndex < slotMachine.GetLength(1); rowIndex++)
             {
                 for (int colIndex = 0; colIndex < slotMachine.GetLength(0); colIndex++)
@@ -103,9 +109,9 @@ namespace Slot_Machine
             }
             else
             {
-                ClearUserOutput();
+                Console.Clear();
                 Console.WriteLine($"Balance returned: {balance}");
-                PrintEndGameMessage();
+                Console.WriteLine("Thanks for playing!");
 
             }
             return spinAgain;
@@ -171,6 +177,7 @@ namespace Slot_Machine
         /// </summary>
         public static void PrintEndGameMessage()
         {
+            Console.Clear();
             Console.WriteLine("Thanks for playing!");
         }
     }

@@ -1,0 +1,15 @@
+/Users/user/Documents/GitHub/Personal-Account/Slot_Machine/bin/Debug/net7.0/Slot_Machine
+/Users/user/Documents/GitHub/Personal-Account/Slot_Machine/bin/Debug/net7.0/Slot_Machine.deps.json
+/Users/user/Documents/GitHub/Personal-Account/Slot_Machine/bin/Debug/net7.0/Slot_Machine.runtimeconfig.json
+/Users/user/Documents/GitHub/Personal-Account/Slot_Machine/bin/Debug/net7.0/Slot_Machine.dll
+/Users/user/Documents/GitHub/Personal-Account/Slot_Machine/bin/Debug/net7.0/Slot_Machine.pdb
+/Users/user/Documents/GitHub/Personal-Account/Slot_Machine/obj/Debug/net7.0/Slot_Machine.csproj.AssemblyReference.cache
+/Users/user/Documents/GitHub/Personal-Account/Slot_Machine/obj/Debug/net7.0/Slot_Machine.GeneratedMSBuildEditorConfig.editorconfig
+/Users/user/Documents/GitHub/Personal-Account/Slot_Machine/obj/Debug/net7.0/Slot_Machine.AssemblyInfoInputs.cache
+/Users/user/Documents/GitHub/Personal-Account/Slot_Machine/obj/Debug/net7.0/Slot_Machine.AssemblyInfo.cs
+/Users/user/Documents/GitHub/Personal-Account/Slot_Machine/obj/Debug/net7.0/Slot_Machine.csproj.CoreCompileInputs.cache
+/Users/user/Documents/GitHub/Personal-Account/Slot_Machine/obj/Debug/net7.0/Slot_Machine.dll
+/Users/user/Documents/GitHub/Personal-Account/Slot_Machine/obj/Debug/net7.0/refint/Slot_Machine.dll
+/Users/user/Documents/GitHub/Personal-Account/Slot_Machine/obj/Debug/net7.0/Slot_Machine.pdb
+/Users/user/Documents/GitHub/Personal-Account/Slot_Machine/obj/Debug/net7.0/Slot_Machine.genruntimeconfig.cache
+/Users/user/Documents/GitHub/Personal-Account/Slot_Machine/obj/Debug/net7.0/ref/Slot_Machine.dll

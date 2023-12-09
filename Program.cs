@@ -38,22 +38,20 @@ class Program
                 && gameTypeSelection != USER_SELECTION_COLUMNS
                 && gameTypeSelection != USER_SELECTION_DIAGONALS)
             {
-                UIMethods.ClearUserOutput();
                 gameTypeSelection = UIMethods.PrintGamePlaySelection(USER_SELECTION_ROWS, USER_SELECTION_COLUMNS, USER_SELECTION_DIAGONALS);
             }
-            UIMethods.ClearUserOutput();
 
             while (balance > 0)
             {
                 int[,] slotMachine = LogicMethods.SetSlotMachineRandomValues(COL_NUMBER, ROW_NUMBER, RDM_NUMBER_TOP_END);
 
                 int lineNumberSelection = UIMethods.LineNumberInput(balance, gameTypeSelection, MAX_LINE_WIN_NUMBER_HOR_VER, MAX_LINE_WIN_NUMBER_DIAG);
+
                 //Winning Scenario: Row
                 if (gameTypeSelection == USER_SELECTION_ROWS)
                 {
 
                     balance = balance - lineNumberSelection;
-                    UIMethods.ClearUserOutput();
 
                     int rowMatch = LogicMethods.GetRowMatch(lineNumberSelection, slotMachine);
                     if (rowMatch > 0) //Counting matching pair values
@@ -68,7 +66,6 @@ class Program
                 {
 
                     balance = balance - lineNumberSelection;
-                    UIMethods.ClearUserOutput();
 
                     int colMatch = LogicMethods.GetColumnMatch(lineNumberSelection, slotMachine);
                     if (colMatch > 0) //Counting matching pair values - every time there is a Column match
@@ -84,20 +81,19 @@ class Program
                 {
 
                     balance = balance - lineNumberSelection;
-                    UIMethods.ClearUserOutput();
 
                     //} //end Diagonal Top left match
                     int diagMatch = LogicMethods.GetDiagonalMatchTopLeft(lineNumberSelection, slotMachine);
                     if (diagMatch > 0)
                     {
-                        UIMethods.PrintDiagonal1WinMessage();
+                        UIMethods.PrintDiagonalOneWinMessage();
                         balance = balance + WIN_AMOUNT * diagMatch;
                     }//end Diagonal match
 
                     int diagMatchTwo = LogicMethods.GetDiagonalMatchTopRight(lineNumberSelection, slotMachine);
                     if (diagMatchTwo > 0)
                     {
-                        UIMethods.PrintDiagonal2WinMessage();
+                        UIMethods.PrintDiagonalTwoWinMessage();
                         balance = balance + WIN_AMOUNT * diagMatchTwo;
                     }
                 } //end Winning Scenarios: Diagonal
@@ -111,14 +107,13 @@ class Program
                     UIMethods.PrintNoMoneyMessage();
 
                     char input = Console.ReadKey().KeyChar; //Option to restart the game by pressing 'y'; if not then end the game
-                    UIMethods.ClearUserOutput();
+                    UIMethods.ClearUserOutput(); //Required
                     if (input == USER_SELECT_YES)
                     {
                         continue;
                     }
                     else
                     {
-                        UIMethods.ClearUserOutput();
                         UIMethods.PrintEndGameMessage();
                         return;
                     }
