@@ -18,11 +18,9 @@ namespace Slot_Machine
             int[,] slotMachine = new int[width, length]; //2D Array with numbers for each slot
             Random rng = new Random(); //Random generator
 
-            int rowIndex;
-            int colIndex;
-            for (rowIndex = 0; rowIndex < width; rowIndex++) //Generate random numbers for Slot per row
+            for (int rowIndex = 0; rowIndex < width; rowIndex++) //Generate random numbers for Slot per row
             {
-                for (colIndex = 0; colIndex < length; colIndex++) //Generate random numbers for Slot per column
+                for (int colIndex = 0; colIndex < length; colIndex++) //Generate random numbers for Slot per column
                 {
                     slotMachine[rowIndex, colIndex] = rng.Next(topEndNumber); //Random generator for each slot in machine
                 }
