@@ -13,3 +13,5 @@
 /Users/user/Documents/GitHub/Personal-Account/Slot_Machine/obj/Debug/net7.0/Slot_Machine.pdb
 /Users/user/Documents/GitHub/Personal-Account/Slot_Machine/obj/Debug/net7.0/Slot_Machine.genruntimeconfig.cache
 /Users/user/Documents/GitHub/Personal-Account/Slot_Machine/obj/Debug/net7.0/ref/Slot_Machine.dll
+/Users/user/Documents/GitHub/Personal-Account/Slot_Machine/bin/Debug/net7.0/Newtonsoft.Json.dll
+/Users/user/Documents/GitHub/Personal-Account/Slot_Machine/obj/Debug/net7.0/Slot_Machine.csproj.CopyComplete

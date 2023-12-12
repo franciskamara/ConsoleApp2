@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Cvnbx9tPqrPaM6YKRxgGFjaffuHj/9uWDUixbz/fZRCXWp2XZAgPV39Z8rfwmfDt6TI9IulbsepQ2vjwVpn6hA==",
+  "dgSpecHash": "1UE92Xo+4BoeMbN4ykMa1wuTDt7NtdWTRC/9AyDPtsOP1ZurU6m2chqCTv/Pyhbl/2WgahTcllFzhs5YFTlsgQ==",
   "success": true,
   "projectFilePath": "/Users/user/Documents/GitHub/Personal-Account/Slot_Machine/Slot_Machine.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/user/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

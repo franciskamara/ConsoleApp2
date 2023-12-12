@@ -18,7 +18,7 @@ namespace Slot_Machine
         /// <returns>User value input</returns>
         public static int MoneyInputRequestMessage()
         {
-            Console.Write("\nInsert coins: ");
+            Console.Write("\nInsert coins to play: ");
             int balance = int.Parse(Console.ReadLine());
             return balance;
         }
