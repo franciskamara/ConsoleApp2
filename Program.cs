@@ -11,8 +11,8 @@ class Program
     const int ROW_NUMBER = 3;
     const int RDM_NUMBER_TOP_END = 11;
     const int WIN_AMOUNT = 10;
-    const int MAX_LINE_WIN_NUMBER_HOR_VER = 3; //Max input for Column/Row
-    const int MAX_LINE_WIN_NUMBER_DIAG = 2; //Max input for Diagonal
+    public const int MAX_LINE_WIN_NUMBER_HOR_VER = 3; //Max input for Column/Row
+    public const int MAX_LINE_WIN_NUMBER_DIAG = 2; //Max input for Diagonal
 
     // User game selection constants
     public const char USER_SELECTION_ROWS = 'r';
@@ -38,14 +38,14 @@ class Program
                 && gameTypeSelection != USER_SELECTION_COLUMNS
                 && gameTypeSelection != USER_SELECTION_DIAGONALS)
             {
-                gameTypeSelection = UIMethods.PrintGamePlaySelection(USER_SELECTION_ROWS, USER_SELECTION_COLUMNS, USER_SELECTION_DIAGONALS);
+                gameTypeSelection = UIMethods.PrintGamePlaySelection();
             }
 
             while (balance > 0)
             {
                 int[,] slotMachine = LogicMethods.SetSlotMachineRandomValues(COL_NUMBER, ROW_NUMBER, RDM_NUMBER_TOP_END);
 
-                int lineNumberSelection = UIMethods.LineNumberInput(balance, gameTypeSelection, MAX_LINE_WIN_NUMBER_HOR_VER, MAX_LINE_WIN_NUMBER_DIAG);
+                int lineNumberSelection = UIMethods.LineNumberInput(balance, gameTypeSelection);
 
                 //Winning Scenario: Row
                 if (gameTypeSelection == USER_SELECTION_ROWS)

@@ -4,10 +4,10 @@ using SlotMachine;
 
 namespace Slot_Machine
 {
-	public static class UIMethods
-	{
-		public static void PrintWelcomeMessage()
-		{
+    public static class UIMethods
+    {
+        public static void PrintWelcomeMessage()
+        {
             Console.WriteLine("   Slot Machine"); //Intro text
             Console.WriteLine("*-*-*-*-*-*-*-*-*-*");
         }
@@ -26,18 +26,18 @@ namespace Slot_Machine
         /// <summary>
         /// Ask user to select which lines they want to play
         /// </summary>
-        /// <param name="row">stands for 'r' selection</param>
-        /// <param name="col">stands for 'c' selection</param>
-        /// <param name="diag">stands for 'd' selection</param>
+        /// <param name="USER_SELECTION_ROWS">stands for 'r' selection</param>
+        /// <param name="USER_SELECTION_COLUMNS">stands for 'c' selection</param>
+        /// <param name="USER_SELECTION_DIAGONALS">stands for 'd' selection</param>
         /// <returns></returns>
-        public static char PrintGamePlaySelection(char row, char col, char diag)
+        public static char PrintGamePlaySelection()
         {
             Console.Clear();
 
             Console.WriteLine($"Choose your game!" +
-                $"\n- Play for Rows ({Program.USER_SELECTION_ROWS}) " +
-                $"\n- Play for Columns ({col}) " +
-                $"\n- Play for Diagonals ({diag})");
+                              $"\n- Play for Rows ({Program.USER_SELECTION_ROWS}) " +
+                              $"\n- Play for Columns ({Program.USER_SELECTION_COLUMNS}) " +
+                              $"\n- Play for Diagonals ({Program.USER_SELECTION_DIAGONALS})");
             Console.WriteLine();
             char gameTypeSelection = Console.ReadKey().KeyChar;
 
@@ -51,13 +51,13 @@ namespace Slot_Machine
         /// <param name="balance">User's money balance</param>
         /// <param name="gameTypeSelection">Game selected by user</param>
         /// <returns>Number of lines user wants to play</returns>
-        public static int LineNumberInput(int balance, char gameTypeSelection, int MAX_LINE_NUMBER_HOR_VER, int MAX_LINE_NUMBER_DIAG)
+        public static int LineNumberInput(int balance, char gameTypeSelection)
         {
-            int maxLineNumber = MAX_LINE_NUMBER_HOR_VER;
+            int maxLineNumber = Program.MAX_LINE_WIN_NUMBER_HOR_VER;
             int lineNumberSelection = 0;
             if (gameTypeSelection == Program.USER_SELECTION_DIAGONALS)
             {
-                maxLineNumber = MAX_LINE_NUMBER_DIAG;
+                maxLineNumber = Program.MAX_LINE_WIN_NUMBER_DIAG;
 
             }
             while (balance > 0)
@@ -72,7 +72,7 @@ namespace Slot_Machine
                 }
                 Console.Write("Input invalid. Try another input.");
             }
-                return lineNumberSelection;
+            return lineNumberSelection;
         }
 
         /// <summary>
@@ -198,4 +198,3 @@ namespace Slot_Machine
         }
     }
 }
-
