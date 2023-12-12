@@ -62,7 +62,8 @@ namespace Slot_Machine
             }
             while (balance > 0)
             {
-                Console.WriteLine($"\nSelect how many lines you wish to play?\nBetween 1 and {maxLineNumber}");
+                Console.Clear();
+                Console.WriteLine($"Select how many lines you wish to play?\nBetween 1 and {maxLineNumber}");
                 lineNumberSelection = int.Parse(Console.ReadLine());
                 if (lineNumberSelection <= balance && lineNumberSelection <= maxLineNumber)
                 {
@@ -143,14 +144,14 @@ namespace Slot_Machine
         /// <summary>
         /// Diagonal One Win message
         /// </summary>
-        public static void PrintDiagonal1WinMessage()
+        public static void PrintDiagonalOneWinMessage()
         {
             Console.WriteLine("Diagonal match");
         }
         /// <summary>
         /// Diagonal 2 Win message
         /// </summary>
-        public static void PrintDiagonal2WinMessage()
+        public static void PrintDiagonalTwoWinMessage()
         {
             Console.WriteLine("Diagonal match 2");
         }

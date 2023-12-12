@@ -107,6 +107,7 @@ class Program
                     UIMethods.PrintNoMoneyMessage();
 
                     char input = Console.ReadKey().KeyChar; //Option to restart the game by pressing 'y'; if not then end the game
+
                     UIMethods.ClearUserOutput(); //Required
                     if (input == USER_SELECT_YES)
                     {
