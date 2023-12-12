@@ -30,13 +30,12 @@ class Program
         {
             UIMethods.PrintWelcomeMessage();// Method - Intro text
 
-            balance = UIMethods.MoneyInputRequestMessage();//
-
-
+            balance = UIMethods.MoneyInputRequestMessage();//Ask user to input funds
+            
             char gameTypeSelection = ' ';
             while (gameTypeSelection != USER_SELECTION_ROWS
-                && gameTypeSelection != USER_SELECTION_COLUMNS
-                && gameTypeSelection != USER_SELECTION_DIAGONALS)
+                   && gameTypeSelection != USER_SELECTION_COLUMNS
+                   && gameTypeSelection != USER_SELECTION_DIAGONALS)
             {
                 gameTypeSelection = UIMethods.PrintGamePlaySelection();
             }
@@ -50,7 +49,6 @@ class Program
                 //Winning Scenario: Row
                 if (gameTypeSelection == USER_SELECTION_ROWS)
                 {
-
                     balance = balance - lineNumberSelection;
 
                     int rowMatch = LogicMethods.GetRowMatch(lineNumberSelection, slotMachine);
@@ -64,7 +62,6 @@ class Program
                 // Winning Scenario: Column
                 if (gameTypeSelection == USER_SELECTION_COLUMNS)
                 {
-
                     balance = balance - lineNumberSelection;
 
                     int colMatch = LogicMethods.GetColumnMatch(lineNumberSelection, slotMachine);
@@ -74,12 +71,10 @@ class Program
                         balance = balance + WIN_AMOUNT * colMatch;
                     }
                 }//end Winning Scenario: Column
-
-
+                
                 // Winning Scenario: Diagonal
                 if (gameTypeSelection == USER_SELECTION_DIAGONALS)
                 {
-
                     balance = balance - lineNumberSelection;
 
                     //} //end Diagonal Top left match
@@ -106,9 +101,6 @@ class Program
                 {
                     bool gameRestart = UIMethods.AskToPlayAgain();
 
-                    //char input = Console.ReadKey().KeyChar; //Option to restart the game by pressing 'y'; if not then end the game
-
-                    //UIMethods.ClearUserOutput(); //Required
                     if (gameRestart == true)
                     {
                         continue;
@@ -126,7 +118,6 @@ class Program
                 }
                 else
                     continue;
-
             }//end While loop where (balance > 0)
         }//end startGame While loop
     }//end Main args

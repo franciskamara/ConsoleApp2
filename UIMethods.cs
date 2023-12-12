@@ -66,9 +66,8 @@ namespace Slot_Machine
                 Console.WriteLine($"Select how many lines you wish to play?\nBetween 1 and {maxLineNumber}");
                 lineNumberSelection = int.Parse(Console.ReadLine());
                 if (lineNumberSelection <= balance && lineNumberSelection <= maxLineNumber)
-                {
+                { 
                     break;
-
                 }
                 Console.Write("Input invalid. Try another input.");
             }
