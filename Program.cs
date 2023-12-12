@@ -90,7 +90,7 @@ class Program
                         balance = balance + WIN_AMOUNT * diagMatch;
                     }//end Diagonal match
 
-                    int diagMatchTwo = LogicMethods.GetDiagonalMatchTopRight(lineNumberSelection, slotMachine);
+                    int diagMatchTwo = LogicMethods.GetDiagonalMatchTopRight(slotMachine);
                     if (diagMatchTwo > 0)
                     {
                         UIMethods.PrintDiagonalTwoWinMessage();
@@ -104,12 +104,12 @@ class Program
 
                 if (balance <= 0) //Where balance is 0, Ask user if they want to insert more money.
                 {
-                    UIMethods.PrintNoMoneyMessage();
+                    bool gameRestart = UIMethods.AskToPlayAgain();
 
-                    char input = Console.ReadKey().KeyChar; //Option to restart the game by pressing 'y'; if not then end the game
+                    //char input = Console.ReadKey().KeyChar; //Option to restart the game by pressing 'y'; if not then end the game
 
-                    UIMethods.ClearUserOutput(); //Required
-                    if (input == USER_SELECT_YES)
+                    //UIMethods.ClearUserOutput(); //Required
+                    if (gameRestart == true)
                     {
                         continue;
                     }

@@ -113,7 +113,7 @@ namespace Slot_Machine
         /// <param name="lineNumberSelection">how many lines to check</param>
         /// <param name="slotMachine">the grid</param>
         /// <returns>number of matched diagonals</returns>
-        public static int GetDiagonalMatchTopRight(int lineNumberSelection, int[,] slotMachine)
+        public static int GetDiagonalMatchTopRight(int[,] slotMachine)
         {
             int diag2Counter = 0; //Diagonal match - top Right
             int diagMatchTwo = 0;

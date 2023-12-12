@@ -35,7 +35,7 @@ namespace Slot_Machine
             Console.Clear();
 
             Console.WriteLine($"Choose your game!" +
-                $"\n- Play for Rows ({row}) " +
+                $"\n- Play for Rows ({Program.USER_SELECTION_ROWS}) " +
                 $"\n- Play for Columns ({col}) " +
                 $"\n- Play for Diagonals ({diag})");
             Console.WriteLine();
@@ -167,10 +167,25 @@ namespace Slot_Machine
         /// <summary>
         /// Where balance is 0, Notify user and ask if they wish to play again 
         /// </summary>
-        public static void PrintNoMoneyMessage()
+        public static bool AskToPlayAgain()
         {
+            bool gameRestart;
+
             Console.WriteLine("You ran out of money.");
             Console.WriteLine($"Insert more money to play again? {Program.USER_SELECT_YES} / {Program.USER_SELECT_NO}");
+
+            char input = Console.ReadKey().KeyChar; //Option to restart the game by pressing 'y'; if not then end the game
+
+            Console.Clear();
+            if (input == Program.USER_SELECT_YES)
+            {
+                gameRestart = true;
+            }
+            else
+            {
+                gameRestart = false;
+            }
+            return gameRestart;
         }
 
         /// <summary>
