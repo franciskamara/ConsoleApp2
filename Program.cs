@@ -1,6 +1,4 @@
-﻿using System;
-using System.Net.Quic;
-using Slot_Machine;
+﻿using Slot_Machine;
 
 namespace SlotMachine; // Note: actual namespace depends on the project name.
 
