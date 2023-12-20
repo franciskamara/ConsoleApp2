@@ -7,9 +7,9 @@ namespace SlotMachine; // Note: actual namespace depends on the project name.
 class Program
 {
     // Game play constants
-    const int COL_NUMBER = 3;
-    const int ROW_NUMBER = 3;
-    const int RDM_NUMBER_TOP_END = 11;
+    // const int COL_NUMBER = 3;
+    // const int ROW_NUMBER = 3;
+    // const int RDM_NUMBER_TOP_END = 11;
     const int WIN_AMOUNT = 10;
     public const int MAX_LINE_WIN_NUMBER_HOR_VER = 3; //Max input for Column/Row
     public const int MAX_LINE_WIN_NUMBER_DIAG = 2; //Max input for Diagonal
@@ -42,7 +42,7 @@ class Program
 
             while (balance > 0)
             {
-                int[,] slotMachine = LogicMethods.SetSlotMachineRandomValues(COL_NUMBER, ROW_NUMBER, RDM_NUMBER_TOP_END);
+                int[,] slotMachine = LogicMethods.SetSlotMachineRandomValues();
 
                 int lineNumberSelection = UIMethods.LineNumberInput(balance, gameTypeSelection);
 

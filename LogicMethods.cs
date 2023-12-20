@@ -5,6 +5,10 @@ namespace Slot_Machine
 {
     public class LogicMethods
     {
+        const int COL_NUMBER = 3;
+        const int ROW_NUMBER = 3;
+        const int RDM_NUMBER_TOP_END = 11;
+        
         /// <summary>
         /// Set SLot Machine random values
         /// </summary>
@@ -12,17 +16,17 @@ namespace Slot_Machine
         /// <param name="length">gri length</param>
         /// <param name="topEndNumber">Top end number of random draw numbers</param>
         /// <returns></returns>
-        public static int[,] SetSlotMachineRandomValues(int width, int length, int topEndNumber)
+        public static int[,] SetSlotMachineRandomValues()
         {
 
-            int[,] slotMachine = new int[width, length]; //2D Array with numbers for each slot
+            int[,] slotMachine = new int[COL_NUMBER, ROW_NUMBER]; //2D Array with numbers for each slot
             Random rng = new Random(); //Random generator
 
-            for (int rowIndex = 0; rowIndex < width; rowIndex++) //Generate random numbers for Slot per row
+            for (int rowIndex = 0; rowIndex < ROW_NUMBER; rowIndex++) //Generate random numbers for Slot per row
             {
-                for (int colIndex = 0; colIndex < length; colIndex++) //Generate random numbers for Slot per column
+                for (int colIndex = 0; colIndex < COL_NUMBER; colIndex++) //Generate random numbers for Slot per column
                 {
-                    slotMachine[rowIndex, colIndex] = rng.Next(topEndNumber); //Random generator for each slot in machine
+                    slotMachine[rowIndex, colIndex] = rng.Next(RDM_NUMBER_TOP_END); //Random generator for each slot in machine
                 }
             }//end Slot loop
             return slotMachine;
