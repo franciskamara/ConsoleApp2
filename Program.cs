@@ -38,7 +38,7 @@ class Program
                 gameTypeSelection = UIMethods.PrintGamePlaySelection();
             }
 
-            while (balance > 0)
+            while (balance > 0)//Play session while user balance is greater than 0
             {
                 int[,] slotMachine = LogicMethods.SetSlotMachineRandomValues();
 
