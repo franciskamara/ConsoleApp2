@@ -24,7 +24,7 @@ class Program
         int balance;
 
         bool startGame = true;
-        while (startGame)
+        while (startGame)//gameplay sequence
         {
             UIMethods.PrintWelcomeMessage();// Method - Intro text
 
