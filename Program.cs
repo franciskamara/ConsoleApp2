@@ -40,7 +40,7 @@ class Program
 
             while (balance > 0)//Play session while user balance is greater than 0
             {
-                int[,] slotMachine = LogicMethods.SetSlotMachineRandomValues();
+                int[,] slotMachine = LogicMethods.SetSlotMachineRandomValues();//Draw random numbers for slot
 
                 int lineNumberSelection = UIMethods.LineNumberInput(balance, gameTypeSelection);
 
