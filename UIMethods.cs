@@ -40,8 +40,8 @@ namespace Slot_Machine
                               $"\n- Play for Diagonals ({Program.USER_SELECTION_DIAGONALS})");
             Console.WriteLine();
             char gameTypeSelection = Console.ReadKey().KeyChar;
-
             Console.Clear();
+
             return gameTypeSelection;
         }
 
@@ -60,6 +60,7 @@ namespace Slot_Machine
                 maxLineNumber = Program.MAX_LINE_WIN_NUMBER_DIAG;
 
             }
+
             while (balance > 0)
             {
                 Console.Clear();
@@ -140,6 +141,7 @@ namespace Slot_Machine
         {
             Console.WriteLine("Column match");
         }
+
         /// <summary>
         /// Diagonal One Win message
         /// </summary>
@@ -147,6 +149,7 @@ namespace Slot_Machine
         {
             Console.WriteLine("Diagonal match");
         }
+
         /// <summary>
         /// Diagonal 2 Win message
         /// </summary>
@@ -163,6 +166,7 @@ namespace Slot_Machine
         {
             Console.WriteLine($"Your balance is now: {balance}\n");
         }
+
         /// <summary>
         /// Where balance is 0, Notify user and ask if they wish to play again 
         /// </summary>
